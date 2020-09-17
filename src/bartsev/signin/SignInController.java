@@ -32,7 +32,11 @@ public class SignInController {
 
     @FXML
     void initialize() {
+
         authSignInButton.setOnAction(event -> {
+            String loginText = loginField.getText().trim();
+            String loginPassword = passwordField.getText().trim();
+
             authSignInButton.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
