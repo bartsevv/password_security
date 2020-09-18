@@ -12,10 +12,13 @@ public class SignIn {
     private Boolean requiredPasswordLength = false;
     private Boolean requiredPasswordUpperCase = false;
     private Boolean requiredPasswordLowerCase = false;
+    private Boolean requiredPasswordNumbers = false;
 
     public SignIn(String login, String password) {
         this.login = login;
         this.password = password;
+        validateLogin();
+        validatePassword();
     }
 
     public void validateLogin() {
@@ -35,8 +38,14 @@ public class SignIn {
 
         requiredPasswordUpperCase = !(password.equals(password.toLowerCase()));
         requiredPasswordLowerCase = !(password.equals(password.toUpperCase()));
-    }
 
+        for(char c : password.toCharArray()) {
+            if (Character.isDigit(c)) {
+                requiredPasswordNumbers = true;
+                break;
+            }
+        }
+    }
 
     public Boolean getRequiredLoginLength() {
         return requiredLoginLength;
@@ -52,5 +61,9 @@ public class SignIn {
 
     public Boolean getRequiredPasswordLowerCase() {
         return requiredPasswordLowerCase;
+    }
+
+    public Boolean getRequiredPasswordNumbers() {
+        return requiredPasswordNumbers;
     }
 }
