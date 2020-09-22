@@ -1,5 +1,8 @@
 package bartsev.signin;
 
+import bartsev.adminpanel.AdminPanelController;
+import bartsev.users.User;
+import bartsev.userwindow.UserWindowController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -12,10 +15,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class SignInController {
+    private final static String ADMIN_LOGIN = "ADMIN";
+    private final static String ADMIN_PASSWORD = "ADMIN";
 
+    public User user;
 
     @FXML
     private ResourceBundle resources;
@@ -37,23 +44,66 @@ public class SignInController {
         authSignInButton.setOnAction(event -> {
             String login = loginField.getText().trim();
             String password = passwordField.getText().trim();
-             if (validateData(login, password)) {
-                 authSignInButton.getScene().getWindow().hide();
 
-                 FXMLLoader loader = new FXMLLoader();
-                 loader.setLocation(getClass().getResource("/bartsev/adminpanel/AdminPanel.fxml"));
-                 try {
-                     loader.load();
-                 } catch (IOException e) {
-                     e.printStackTrace();
-                 }
-
-                 Parent root = loader.getRoot();
-                 Stage stage = new Stage();
-                 stage.setScene(new Scene(root));
-                 stage.showAndWait();
-             }
+            user = new User(login, password, LocalDate.now());
+            if (isAdmin()) {
+                try {
+                    loadAdminScene();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    loadUserScene();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+//             if (validateData(login, password)) {
+//                 authSignInButton.getScene().getWindow().hide();
+//                 FXMLLoader loader = new FXMLLoader();
+//                 loader.setLocation(getClass().getResource("/bartsev/userwindow/UserWindow.fxml"));
+//                 try {
+//                     loader.load();
+//
+//                 } catch (IOException e) {
+//                     e.printStackTrace();
+//                 }
+//                 Parent root = loader.getRoot();
+//
+//                 Stage stage = new Stage();
+//                 stage.setScene(new Scene(root));
+//                 stage.showAndWait();
+//             }
         });
+    }
+
+    private void loadUserScene() throws IOException {
+        authSignInButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bartsev/userwindow/UserWindow.fxml"));
+        Parent root = loader.load();
+
+        UserWindowController sceneController = loader.getController();
+        sceneController.transferMessage(user);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("User panel");
+        stage.show();
+    }
+
+    private void loadAdminScene() throws IOException {
+        authSignInButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bartsev/adminpanel/AdminPanel.fxml"));
+        Parent root = loader.load();
+
+        AdminPanelController sceneController = loader.getController();
+        sceneController.transferMessage(user);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Admin panel");
+        stage.show();
     }
 
     private Boolean verifyData(String login, String password) {
@@ -123,5 +173,9 @@ public class SignInController {
         alert.setContentText("Ваш " + type + " не соответствует требованиям: " + warningText);
 
         alert.showAndWait();
+    }
+
+    private Boolean isAdmin() {
+        return ((user.getLogin().equals(ADMIN_LOGIN)) && (user.getPassword().equals(ADMIN_PASSWORD)));
     }
 }
