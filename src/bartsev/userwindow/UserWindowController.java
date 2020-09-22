@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class UserWindowController implements Initializable {

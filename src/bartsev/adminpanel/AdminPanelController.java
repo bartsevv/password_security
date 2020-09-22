@@ -1,5 +1,6 @@
 package bartsev.adminpanel;
 
+import bartsev.LoadScenes;
 import bartsev.adminpanel.addnewuser.AddNewUserController;
 import bartsev.adminpanel.userlist.UserListController;
 import bartsev.users.User;
@@ -41,38 +42,15 @@ public class AdminPanelController {
     @FXML
     void initialize() {
         addNewUserButton.setOnAction(event -> {
-            loadAddNewUserScene();
+            LoadScenes.loadAddNewUserWindow();
         });
 
         listOfUsersButton.setOnAction(event -> {
-            try {
-                loadUserListScene();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            LoadScenes.loadUserListWindow();
         });
     }
 
     public void transferMessage(User user) {
         this.user = user;
-    }
-
-    private void loadAddNewUserScene() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bartsev/adminpanel/addnewuser/AddNewUser.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Add new user");
-        stage.show();
-    }
-
-    private void loadUserListScene() throws IOException {
-        new UserListController().initialize();
     }
 }

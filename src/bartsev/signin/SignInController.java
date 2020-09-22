@@ -1,5 +1,6 @@
 package bartsev.signin;
 
+import bartsev.LoadScenes;
 import bartsev.adminpanel.AdminPanelController;
 import bartsev.users.User;
 import bartsev.userwindow.UserWindowController;
@@ -21,14 +22,10 @@ import java.util.ResourceBundle;
 public class SignInController {
     private final static String ADMIN_LOGIN = "ADMIN";
     private final static String ADMIN_PASSWORD = "ADMIN";
+    private final static String PATH_TO_USER_SCENE = "/bartsev/userwindow/UserWindow.fxml";
+    private final static String PATH_TO_ADMIN_SCENE = "/bartsev/adminpanel/AdminPanel.fxml";
 
     public User user;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private JFXButton authSignInButton;
@@ -47,17 +44,11 @@ public class SignInController {
 
             user = new User(login, password, LocalDate.now(), User.ACTIVATED_USER);
             if (isAdmin()) {
-                try {
-                    loadAdminScene();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                authSignInButton.getScene().getWindow().hide();
+                LoadScenes.loadAdminWindow(user);
             } else {
-                try {
-                    loadUserScene();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                authSignInButton.getScene().getWindow().hide();
+                LoadScenes.loadUserWindow(user);
             }
 //             if (validateData(login, password)) {
 //                 authSignInButton.getScene().getWindow().hide();
@@ -76,34 +67,6 @@ public class SignInController {
 //                 stage.showAndWait();
 //             }
         });
-    }
-
-    private void loadUserScene() throws IOException {
-        authSignInButton.getScene().getWindow().hide();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bartsev/userwindow/UserWindow.fxml"));
-        Parent root = loader.load();
-
-        UserWindowController sceneController = loader.getController();
-        sceneController.transferMessage(user);
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("User panel");
-        stage.show();
-    }
-
-    private void loadAdminScene() throws IOException {
-        authSignInButton.getScene().getWindow().hide();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bartsev/adminpanel/AdminPanel.fxml"));
-        Parent root = loader.load();
-
-        AdminPanelController sceneController = loader.getController();
-        sceneController.transferMessage(user);
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Admin panel");
-        stage.show();
     }
 
     private Boolean verifyData(String login, String password) {

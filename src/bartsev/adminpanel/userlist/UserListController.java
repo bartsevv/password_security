@@ -1,5 +1,6 @@
 package bartsev.adminpanel.userlist;
 
+import bartsev.LoadScenes;
 import bartsev.users.User;
 import bartsev.userwindow.UserWindowController;
 import javafx.collections.FXCollections;
@@ -49,25 +50,7 @@ public class UserListController {
             TableRow<User> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    User rowData = row.getItem();
-                    System.out.println(rowData);
-
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/bartsev/adminpanel/userlist/EditUser.fxml"));
-                    Parent root = null;
-                    try {
-                        root = loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    EditUserController sceneController = loader.getController();
-                    sceneController.transferMessage(rowData);
-
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.setTitle("Edit user");
-                    stage.show();
-
+                    LoadScenes.loadEditUserWindow(row.getItem());
                 }
             });
             return row;
