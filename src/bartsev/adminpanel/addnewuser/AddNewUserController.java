@@ -1,6 +1,7 @@
 package bartsev.adminpanel.addnewuser;
 
 import bartsev.users.User;
+import bartsev.users.UserActions;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -28,9 +29,9 @@ public class AddNewUserController {
             String login = userLogin.getText();
             String password = userPassword.getText();
 
-            User user = new User(login, password, LocalDate.now(), User.ACTIVATED_USER);
+            User user = new User(login, password, LocalDate.now(), UserActions.ACTIVATED_USER);
             try {
-                user.addNewUser(user);
+                UserActions.addNewUser(user);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

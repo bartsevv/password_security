@@ -2,6 +2,7 @@ package bartsev.adminpanel.userlist;
 
 import bartsev.LoadScenes;
 import bartsev.users.User;
+import bartsev.users.UserActions;
 import bartsev.userwindow.UserWindowController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +22,7 @@ import java.time.LocalDate;
 public class UserListController {
 
     public void initialize() throws IOException {
-        ObservableList<User> userObservableList = FXCollections.observableList(User.getUserList());
+        ObservableList<User> userObservableList = FXCollections.observableList(UserActions.getUserList());
         TableView<User> table = new TableView<User>(userObservableList);
         table.setPrefWidth(600);
         table.setPrefHeight(300);

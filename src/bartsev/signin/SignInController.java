@@ -3,6 +3,7 @@ package bartsev.signin;
 import bartsev.LoadScenes;
 import bartsev.adminpanel.AdminPanelController;
 import bartsev.users.User;
+import bartsev.users.UserActions;
 import bartsev.userwindow.UserWindowController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -42,7 +43,7 @@ public class SignInController {
             String login = loginField.getText().trim();
             String password = passwordField.getText().trim();
 
-            user = new User(login, password, LocalDate.now(), User.ACTIVATED_USER);
+            user = new User(login, password, LocalDate.now(), UserActions.ACTIVATED_USER);
             if (isAdmin()) {
                 authSignInButton.getScene().getWindow().hide();
                 LoadScenes.loadAdminWindow(user);
