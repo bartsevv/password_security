@@ -22,23 +22,28 @@ public class UserListController {
     public void initialize() throws IOException {
         ObservableList<User> userObservableList = FXCollections.observableList(User.getUserList());
         TableView<User> table = new TableView<User>(userObservableList);
-        table.setPrefWidth(510);
+        table.setPrefWidth(600);
         table.setPrefHeight(300);
 
         TableColumn<User, String> loginColumn = new TableColumn<User, String>("Login");
-        loginColumn.setPrefWidth(170);
+        loginColumn.setPrefWidth(150);
         loginColumn.setCellValueFactory(new PropertyValueFactory<User, String>("login"));
         table.getColumns().add(loginColumn);
 
         TableColumn<User, String> passwordColumn = new TableColumn<User, String>("Password");
-        passwordColumn.setPrefWidth(170);
+        passwordColumn.setPrefWidth(150);
         passwordColumn.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
         table.getColumns().add(passwordColumn);
 
         TableColumn<User, LocalDate> expirationColumn = new TableColumn<User, LocalDate>("Expiration");
-        expirationColumn.setPrefWidth(170);
+        expirationColumn.setPrefWidth(150);
         expirationColumn.setCellValueFactory(new PropertyValueFactory<User, LocalDate>("dateOfCreation"));
         table.getColumns().add(expirationColumn);
+
+        TableColumn<User, String> statusColumn = new TableColumn<User, String>("Status");
+        statusColumn.setPrefWidth(150);
+        statusColumn.setCellValueFactory(new PropertyValueFactory<User, String>("status"));
+        table.getColumns().add(statusColumn);
 
         table.setRowFactory(tv -> {
             TableRow<User> row = new TableRow<>();
@@ -69,7 +74,7 @@ public class UserListController {
         });
 
         FlowPane root = new FlowPane(10, 10, table);
-        Scene scene = new Scene(root, 510, 300);
+        Scene scene = new Scene(root, 600, 300);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("List of users");

@@ -56,5 +56,6 @@ public class EditUserController {
         loginText.setText(user.getLogin());
         passwordText.setText(user.getPassword());
         expirationDateText.setText(user.getDateOfCreation().toString());
+        statusText.setText(user.getStatus());
     }
 }

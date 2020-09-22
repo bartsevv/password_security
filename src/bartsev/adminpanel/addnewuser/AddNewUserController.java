@@ -28,7 +28,7 @@ public class AddNewUserController {
             String login = userLogin.getText();
             String password = userPassword.getText();
 
-            User user = new User(login, password, LocalDate.now());
+            User user = new User(login, password, LocalDate.now(), User.ACTIVATED_USER);
             try {
                 user.addNewUser(user);
             } catch (FileNotFoundException e) {

@@ -45,7 +45,7 @@ public class SignInController {
             String login = loginField.getText().trim();
             String password = passwordField.getText().trim();
 
-            user = new User(login, password, LocalDate.now());
+            user = new User(login, password, LocalDate.now(), User.ACTIVATED_USER);
             if (isAdmin()) {
                 try {
                     loadAdminScene();

@@ -14,12 +14,17 @@ public class User {
     private String login;
     private String password;
     private LocalDate dateOfCreation;
+    private String status;
     private final static String FILE_PATH = "src/bartsev/users/listofusers.txt";
+    public final static String DEACTIVATED_USER = "Deactivated";
+    public final static String ACTIVATED_USER = "Activated";
 
-    public User(String login, String password, LocalDate dateOfCreation) {
+
+    public User(String login, String password, LocalDate dateOfCreation, String status) {
         setLogin(login);
         setPassword(password);
         setDateOfCreation(dateOfCreation);
+        setStatus(status);
     }
 
     public void setLogin(String login) {
@@ -53,6 +58,14 @@ public class User {
         printWriter.close();
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public User getUser(String login) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH));
         String line = bufferedReader.readLine();
@@ -60,7 +73,7 @@ public class User {
             if (line.contains(login) && (line.contains(password))) {
                 List<String> userAsString = Arrays.asList(line.split(" "));
                 bufferedReader.close();
-                return new User(userAsString.get(0), userAsString.get(1), LocalDate.parse(userAsString.get(2)));
+                return new User(userAsString.get(0), userAsString.get(1), LocalDate.parse(userAsString.get(2)), userAsString.get(3));
             }
             line = bufferedReader.readLine();
         }
@@ -92,7 +105,7 @@ public class User {
         List<String> selectLine = new ArrayList<>();
         for (int i = 0; i < listOfUsers.size(); i++) {
             selectLine = Arrays.asList(listOfUsers.get(i).split(" ").clone());
-            tempUser = new User(selectLine.get(0), selectLine.get(1), LocalDate.parse(selectLine.get(2)));
+            tempUser = new User(selectLine.get(0), selectLine.get(1), LocalDate.parse(selectLine.get(2)), selectLine.get(3));
             userList.add(tempUser);
         }
         return userList;
