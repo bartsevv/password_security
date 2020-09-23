@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class AddNewUserController {
@@ -32,10 +33,12 @@ public class AddNewUserController {
             User user = new User(login, password, LocalDate.now(), UserActions.ACTIVATED_USER);
             try {
                 UserActions.addNewUser(user);
-            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             addNewUserButton.getScene().getWindow().hide();
         });
     }
+
+
 }

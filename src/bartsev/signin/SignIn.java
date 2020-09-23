@@ -1,69 +1,60 @@
 package bartsev.signin;
 
+import bartsev.LoadScenes;
+import bartsev.Tools;
+import bartsev.users.User;
+import bartsev.users.UserActions;
+import javafx.scene.control.Alert;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+
 public class SignIn {
     private String login;
     private String password;
 
-    private final static Integer minLoginLength = 4;
-    private final static Integer minPasswordLength = 6;
+    private final static String ADMIN_LOGIN = "ADMIN";
+    private final static String ADMIN_PASSWORD = "ADMIN";
 
-    private Boolean requiredLoginLength = false;
+    private final static String INCORRECT_LOGIN_MESSAGE = "Пользователя с таким логином не существует!";
+    private final static String INCORRECT_PASSWORD_MESSAGE = "Ваш пароль введен не верно!";
+    private final static String EXPIRATION_DATE = "Срок действия пароля истек. Необходимо сменить пароль.";
 
-    private Boolean requiredPasswordLength = false;
-    private Boolean requiredPasswordUpperCase = false;
-    private Boolean requiredPasswordLowerCase = false;
-    private Boolean requiredPasswordNumbers = false;
 
     public SignIn(String login, String password) {
         this.login = login;
         this.password = password;
-        validateLogin();
-        validatePassword();
     }
 
-    public void validateLogin() {
-        if (login.length() < minLoginLength) {
-            requiredLoginLength = false;
-        } else {
-            requiredLoginLength = true;
-        }
+    public Boolean isAdmin() {
+        return ((login.equals(ADMIN_LOGIN)) && (password.equals(ADMIN_PASSWORD)));
     }
 
-    public void validatePassword() {
-        if (password.length() < minPasswordLength) {
-            requiredPasswordLength = false;
-        } else {
-            requiredPasswordLength = true;
+    public User findUser() {
+        User user = null;
+        try {
+            user = UserActions.getUser(login);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        requiredPasswordUpperCase = !(password.equals(password.toLowerCase()));
-        requiredPasswordLowerCase = !(password.equals(password.toUpperCase()));
-
-        for(char c : password.toCharArray()) {
-            if (Character.isDigit(c)) {
-                requiredPasswordNumbers = true;
-                break;
+        if (user == null) {
+            Tools.showWarningAlert(INCORRECT_LOGIN_MESSAGE);
+        }
+        if (!(user.getPassword().equals(password))) {
+            Tools.showWarningAlert(INCORRECT_PASSWORD_MESSAGE);
+        } else {
+            if (Duration.between(user.getDateOfCreation().atStartOfDay(), LocalDateTime.now()).toDays() > 25) {
+                Tools.showWarningAlert(EXPIRATION_DATE);
+                LoadScenes.loadChangeRottenPasswordWindow(user);
+            } else {
+                return user;
             }
         }
-    }
 
-    public Boolean getRequiredLoginLength() {
-        return requiredLoginLength;
-    }
-
-    public Boolean getRequiredPasswordLength() {
-        return requiredPasswordLength;
-    }
-
-    public Boolean getRequiredPasswordUpperCase() {
-        return requiredPasswordUpperCase;
-    }
-
-    public Boolean getRequiredPasswordLowerCase() {
-        return requiredPasswordLowerCase;
-    }
-
-    public Boolean getRequiredPasswordNumbers() {
-        return requiredPasswordNumbers;
+        return null;
     }
 }

@@ -15,18 +15,23 @@ public class UserActions {
     public final static String DEACTIVATED_USER = "Deactivated";
     public final static String ACTIVATED_USER = "Activated";
 
-    public static void addNewUser(User user) throws FileNotFoundException {
-        File listOfUsers = new File(FILE_PATH);
-        PrintWriter printWriter = new PrintWriter(listOfUsers);
-        printWriter.println(user.getLogin() + " " + user.getPassword() + " " + user.getDateOfCreation());
-        printWriter.close();
+    public static void addNewUser(User user) throws IOException {
+//        File listOfUsers = new File(FILE_PATH);
+//        PrintWriter printWriter = new PrintWriter(listOfUsers);
+//        printWriter.println(user.getLogin() + " " + user.getPassword() + " " + user.getDateOfCreation());
+//        printWriter.close();
+        FileWriter writer = new FileWriter(FILE_PATH, true);
+        BufferedWriter bufferWriter = new BufferedWriter(writer);
+        bufferWriter.write(user.getLogin() + " " + user.getPassword() + " " + user.getDateOfCreation() + " " + user.getStatus());
+        bufferWriter.newLine();
+        bufferWriter.close();
     }
 
-    public static User getUser(String login, String password) throws IOException {
+    public static User getUser(String login) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH));
         String line = bufferedReader.readLine();
         while (line != null) {
-            if (line.contains(login) && (line.contains(password))) {
+            if (line.contains(login)) {
                 List<String> userAsString = Arrays.asList(line.split(" "));
                 bufferedReader.close();
                 return new User(userAsString.get(0), userAsString.get(1), LocalDate.parse(userAsString.get(2)), userAsString.get(3));
@@ -38,15 +43,29 @@ public class UserActions {
     }
 
     //TODO
-    public static void changeUserPassword(User user, String newPassword) throws IOException {
-        List<String> listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH), StandardCharsets.UTF_8));
-        for (int i = 0; i < listOfUsers.size(); i++) {
-            if (listOfUsers.get(i).contains(user.getLogin())) {
-                listOfUsers.set(i, newPassword);
+    public static void changeUserPassword(User user, String newPassword) {
+        List<User> userList = new ArrayList<>();
+        try {
+            userList = getUserList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(User selectUser: userList) {
+            if (selectUser.getLogin().equals(user.getLogin())) {
+                selectUser.setPassword(newPassword);
+                selectUser.setDateOfCreation(LocalDate.now());
                 break;
             }
         }
-        Files.write(Paths.get(FILE_PATH), listOfUsers, StandardCharsets.UTF_8);
+        clearTheFile();
+        for(User selectUser: userList) {
+            try {
+                addNewUser(selectUser);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static Boolean validatePasswordExpirationDate(User user) {
@@ -65,5 +84,22 @@ public class UserActions {
             userList.add(tempUser);
         }
         return userList;
+    }
+
+    private static void clearTheFile() {
+        FileWriter fwOb = null;
+        try {
+            fwOb = new FileWriter(FILE_PATH, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PrintWriter pwOb = new PrintWriter(fwOb, false);
+        pwOb.flush();
+        pwOb.close();
+        try {
+            fwOb.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
