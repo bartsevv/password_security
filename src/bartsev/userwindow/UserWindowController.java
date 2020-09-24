@@ -1,5 +1,6 @@
 package bartsev.userwindow;
 
+import bartsev.LoadScenes;
 import bartsev.users.User;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ public class UserWindowController implements Initializable {
     private JFXButton aboutProgramButton;
 
     @FXML
-    private JFXButton changeAdminPasswordButton;
+    private JFXButton changePasswordButton;
 
     @FXML
     private JFXButton exitButton;
@@ -29,7 +30,9 @@ public class UserWindowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        changePasswordButton.setOnAction(event -> {
+            LoadScenes.loadChangePasswordByUserWindow(user);
+        });
     }
 
     public void transferMessage(User user) {

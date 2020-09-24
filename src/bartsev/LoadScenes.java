@@ -5,6 +5,7 @@ import bartsev.adminpanel.userlist.EditUserController;
 import bartsev.adminpanel.userlist.UserListController;
 import bartsev.signin.RottenPasswordController;
 import bartsev.users.User;
+import bartsev.userwindow.ChangePasswordController;
 import bartsev.userwindow.UserWindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ public class LoadScenes {
     private final static String PATH_TO_ADD_USER_WINDOW = "/bartsev/adminpanel/addnewuser/AddNewUser.fxml";
     private final static String PATH_TO_EDIT_USER_WINDOW = "/bartsev/adminpanel/userlist/EditUser.fxml";
     private final static String PATH_TO_UPDATE_ROTTEN_PASSWORD_WINDOW = "/bartsev/signin/RottenPassword.fxml";
+    private final static String PATH_TO_CHANGE_USER_PASSWORD_WINDOW = "/bartsev/userwindow/ChangePassword.fxml";
 
     public static void loadUserWindow(User user) {
         FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_USER_WINDOW));
@@ -98,6 +100,21 @@ public class LoadScenes {
         sceneController.transferMessage(user);
 
         loadStage(root, "Update password");
+    }
+
+    public static void loadChangePasswordByUserWindow(User user) {
+        FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_CHANGE_USER_PASSWORD_WINDOW));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ChangePasswordController sceneController = loader.getController();
+        sceneController.transferMessage(user);
+
+        loadStage(root, "Change password");
     }
 
     private static void loadStage(Parent root, String title) {

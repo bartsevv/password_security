@@ -24,7 +24,7 @@
                   <Font name="Ebrima Bold" size="13.0" />
                </font>
             </Label>
-            <JFXButton fx:id="changeAdminPasswordButton" buttonType="RAISED" layoutX="282.0" layoutY="281.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#14e4e4" styleClass="loginBtn" text="CHANGE PASSWORD">
+            <JFXButton fx:id="changePasswordButton" buttonType="RAISED" layoutX="282.0" layoutY="281.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#14e4e4" styleClass="loginBtn" text="CHANGE PASSWORD">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
