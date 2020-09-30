@@ -43,6 +43,9 @@ public class RottenPasswordController {
                         } else {
                             if (oldPassword.equals(newPassword)) {
                                 Tools.showWarningAlert("Новый пароль не может совпадать со старым паролем.");
+                            } else {
+                                UserActions.changeUserPassword(user, newPassword);
+                                okButton.getScene().getWindow().hide();
                             }
                         }
                     }

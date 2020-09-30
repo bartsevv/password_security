@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bartsev.userwindow.aboutprogram.AboutProgramController">
+   <children>
+      <Label layoutX="209.0" layoutY="31.0" prefHeight="29.0" prefWidth="183.0" text="ABOUT PROGRAM" textFill="#003153">
+         <font>
+            <Font name="Ebrima Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="backButtonToUserPanel" layoutX="371.0" layoutY="335.0" prefHeight="39.0" prefWidth="183.0" styleClass="loginBtn" stylesheets="@../../sources/stylesheet.css" text="BACK TO USER PANEL">
+         <font>
+            <Font name="Ebrima Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Text layoutX="42.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="В программе только один пользователь с фиксированным именем ADMIN. В режиме администратора программа поддерживает: смену пароля администратора; просмотр списка пользователей;  создание нового пользователя; деактивация пользователя; удаление пользователя; изменение пароля пользователя; изменение настроек ограничения для смены пароля пользователя." wrappingWidth="517.13671875">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="В режиме обычного пользователя программа позволяет только изменить его пароль и выйти из системы. Все остальные функции недоступны." wrappingWidth="517.13671875">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для пароля установлены 3 требования: использование различных групп символов(символы верхнего, нижнего регистров и срок действия пароля 25 дней)." wrappingWidth="517.13671875">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор: Барцев Михаил, БИ-3." wrappingWidth="517.13671875">
+         <font>
+            <Font name="Ebrima" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

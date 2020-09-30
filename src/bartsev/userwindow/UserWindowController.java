@@ -41,6 +41,11 @@ public class UserWindowController implements Initializable {
             Stage stage = (Stage) exitButton.getScene().getWindow();
             stage.close();
         });
+
+        aboutProgramButton.setOnAction(event -> {
+            aboutProgramButton.getScene().getWindow().hide();
+            LoadScenes.loadAboutProgramFromUserPanel(user);
+        });
     }
 
     public void transferMessage(User user) {

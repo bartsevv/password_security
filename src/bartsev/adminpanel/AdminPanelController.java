@@ -40,6 +40,11 @@ public class AdminPanelController {
             LoadScenes.loadChangePasswordByAdminWindow(UserActions.getUser("ADMIN"));
         });
 
+        aboutProgramButton.setOnAction(event -> {
+            aboutProgramButton.getScene().getWindow().hide();
+            LoadScenes.loadAboutProgramFromAdminPanel();
+        });
+
         exitButton.setOnAction(event -> {
             Stage stage = (Stage) exitButton.getScene().getWindow();
             stage.close();
