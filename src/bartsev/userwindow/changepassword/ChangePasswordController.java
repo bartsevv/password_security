@@ -1,13 +1,16 @@
 package bartsev.userwindow.changepassword;
 
+import bartsev.helpers.LoadScenes;
 import bartsev.helpers.Tools;
+import bartsev.helpers.UserActions;
 import bartsev.helpers.ValidateData;
 import bartsev.models.User;
-import bartsev.helpers.UserActions;
 import bartsev.models.UserRestrictions;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
+import java.time.LocalDate;
 
 public class ChangePasswordController {
     private User user;
@@ -33,8 +36,15 @@ public class ChangePasswordController {
             if (!(oldPassword.trim().isEmpty() || newPassword.trim().isEmpty())) {
                 if (compareOldPassword(oldPassword)) {
                     if (new ValidateData(user.getLogin(), newPassword).validatePasswordWithRestrictions(userRestrictions)) {
-                        UserActions.changeUserPassword(user, newPassword);
-                        okButton.getScene().getWindow().hide();
+                        if (oldPassword.equals(newPassword) && userRestrictions.getThirdRestriction()) {
+                            Tools.showWarningAlert("Ваш новый пароль не должен совпадать со старым.");
+                        } else {
+                            UserActions.changeUserPassword(user, newPassword);
+                            user.setPassword(newPassword);
+                            user.setDateOfCreation(LocalDate.now());
+                            okButton.getScene().getWindow().hide();
+                            LoadScenes.loadUserWindow(user);
+                        }
                     }
                 }
             }
@@ -42,6 +52,7 @@ public class ChangePasswordController {
 
         cancelButton.setOnAction(event -> {
             cancelButton.getScene().getWindow().hide();
+            LoadScenes.loadUserWindow(user);
         });
     }
 

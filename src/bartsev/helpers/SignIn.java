@@ -15,6 +15,7 @@ public class SignIn {
     private final static String INCORRECT_LOGIN_MESSAGE = "Пользователя с таким логином не существует!";
     private final static String INCORRECT_PASSWORD_MESSAGE = "Ваш пароль введен не верно!";
     private final static String EXPIRATION_DATE = "Срок действия пароля истек. Необходимо сменить пароль.";
+    private final static String DEACTIVATED_ACCOUNT = "Ваш аккаунт деактивирован.";
 
 
     public SignIn(String login, String password) {
@@ -32,6 +33,7 @@ public class SignIn {
 
     public User findUser() {
         User user = UserActions.getUser(login);
+        UserRestrictions userRestrictions = UserActions.getUserRestrictions(login);
 
         if (user == null) {
             Tools.showWarningAlert(INCORRECT_LOGIN_MESSAGE);
@@ -39,12 +41,15 @@ public class SignIn {
         if (!(user.getPassword().equals(password))) {
             Tools.showWarningAlert(INCORRECT_PASSWORD_MESSAGE);
         } else {
-            if (Duration.between(user.getDateOfCreation().atStartOfDay(), LocalDateTime.now()).toDays() > 25) {
+            if ((Duration.between(user.getDateOfCreation().atStartOfDay(), LocalDateTime.now()).toDays() > 25) && (userRestrictions.getSecondRestriction())) {
                 Tools.showWarningAlert(EXPIRATION_DATE);
-                UserRestrictions userRestrictions = UserActions.getUserRestrictions(login);
                 LoadScenes.loadChangeRottenPasswordWindow(user, userRestrictions);
             } else {
-                return user;
+                if (user.getStatus().equals(UserActions.DEACTIVATED_USER)) {
+                    Tools.showWarningAlert(DEACTIVATED_ACCOUNT);
+                } else {
+                    return user;
+                }
             }
         }
 

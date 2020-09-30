@@ -3,3 +3,9 @@ misha false true true
 lol true true true
 lol1 true true true
 lol2 true false true
+test1 true true true
+test2 true true true
+test3 true true true
+test4 false true false
+test5 true true true
+test6 false true true

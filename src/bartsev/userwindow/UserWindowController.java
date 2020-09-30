@@ -33,6 +33,7 @@ public class UserWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         changePasswordButton.setOnAction(event -> {
+            changePasswordButton.getScene().getWindow().hide();
             LoadScenes.loadChangePasswordByUserWindow(user, UserActions.getUserRestrictions(user.getLogin()));
         });
 

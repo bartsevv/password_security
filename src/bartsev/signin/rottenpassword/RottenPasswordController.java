@@ -32,17 +32,18 @@ public class RottenPasswordController {
         okButton.setOnAction(event -> {
             String oldPassword = oldPasswordField.getText();
             String newPassword = newPasswordField.getText();
-
-            if (!(user.getPassword().equals(oldPassword))) {
-                Tools.showWarningAlert(INCORRECT_OLD_PASSWORD);
-            } else {
-                if (new ValidateData(user.getLogin(), newPassword).validatePasswordWithRestrictions(userRestrictions)) {
-                    if (userRestrictions.getThirdRestriction()) {
-                        UserActions.changeUserPassword(user, newPassword);
-                        okButton.getScene().getWindow().hide();
-                    } else {
-                        if (oldPassword.equals(newPassword)) {
-                            Tools.showWarningAlert("Новый пароль не может совпадать со старым паролем.");
+            if (!(oldPassword.isEmpty() || (newPassword.isEmpty()))) {
+                if (!(user.getPassword().equals(oldPassword))) {
+                    Tools.showWarningAlert(INCORRECT_OLD_PASSWORD);
+                } else {
+                    if (new ValidateData(user.getLogin(), newPassword).validatePasswordWithRestrictions(userRestrictions)) {
+                        if (userRestrictions.getThirdRestriction()) {
+                            UserActions.changeUserPassword(user, newPassword);
+                            okButton.getScene().getWindow().hide();
+                        } else {
+                            if (oldPassword.equals(newPassword)) {
+                                Tools.showWarningAlert("Новый пароль не может совпадать со старым паролем.");
+                            }
                         }
                     }
                 }
