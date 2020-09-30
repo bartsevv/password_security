@@ -1,5 +1,0 @@
-angelinochka veryhardpassword 2020-09-21 Activated
-misha veryhard 2020-09-22 Deactivated
-test Newtest1 2020-09-23 Activated
-test1 test1 2020-09-23 Activated
-test2 test2 2020-09-24 Activated

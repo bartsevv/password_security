@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d9288ed3-2802-407b-862a-0bd0e16c415e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hwlfsK2ie1BCCL3Kzvko3VI9Zg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/bartsev/adminpanel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\study\password_security\src\bartsev\users" />
+      <recent name="C:\study\password_security\src\bartsev\userwindow\changepassword" />
+      <recent name="C:\study\password_security\src\bartsev\signin\rottenpassword" />
+      <recent name="C:\study\password_security\src\bartsev\adminpanel\listofusers\edituser\changeuserpassword" />
+      <recent name="C:\study\password_security\src\bartsev\adminpanel\changepassword" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bartsev.adminpanel" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\study\password_security\src\bartsev\adminpanel" />
+      <recent name="C:\study\password_security\src\bartsev\adminpanel\userlist" />
+      <recent name="C:\study\password_security\src\bartsev\adminpanel\userlist\edituser" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Launch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bartsev.Launch" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bartsev.helpers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Launch" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9288ed3-2802-407b-862a-0bd0e16c415e" name="Default Changelist" comment="" />
+      <created>1600930142557</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600930142557</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="309" y="42" key="#Inspections" timestamp="1600817948586">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1600817948586" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601380597854">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1601380597854" />
+    <state width="1345" height="2" key="GridCell.Tab.0.bottom" timestamp="1601433433122">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601433433122" />
+    <state width="1345" height="2" key="GridCell.Tab.0.center" timestamp="1601433433120">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601433433120" />
+    <state width="1345" height="2" key="GridCell.Tab.0.left" timestamp="1601433433120">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601433433120" />
+    <state width="1345" height="2" key="GridCell.Tab.0.right" timestamp="1601433433120">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601433433120" />
+    <state width="1345" height="2" key="GridCell.Tab.1.bottom" timestamp="1601318980166">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601318980166" />
+    <state width="1345" height="2" key="GridCell.Tab.1.center" timestamp="1601318980166">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1601318980166" />
+    <state width="1345" height="2" key="GridCell.Tab.1.left" timestamp="1601318980166">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1601318980166" />
+    <state width="1345" height="2" key="GridCell.Tab.1.right" timestamp="1601318980166">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="2" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1601318980166" />
+    <state x="383" y="121" key="refactoring.ChangeSignatureDialog" timestamp="1600978244645">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="383" y="121" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1600978244645" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1600974549251">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1600974549251" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1601398661896">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1601398661896" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/password_security$Launch.ic" NAME="Launch Coverage Results" MODIFIED="1600635930858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bartsev.*</FILTER>
+    </SUITE>
+  </component>
+</project>

@@ -1,29 +1,13 @@
 package bartsev.adminpanel;
 
-import bartsev.LoadScenes;
-import bartsev.adminpanel.addnewuser.AddNewUserController;
-import bartsev.adminpanel.userlist.UserListController;
-import bartsev.users.User;
+import bartsev.helpers.LoadScenes;
+import bartsev.helpers.UserActions;
 import com.jfoenix.controls.JFXButton;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AdminPanelController {
-    private User user;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
     @FXML
     private JFXButton changeAdminPasswordButton;
 
@@ -43,14 +27,22 @@ public class AdminPanelController {
     void initialize() {
         addNewUserButton.setOnAction(event -> {
             LoadScenes.loadAddNewUserWindow();
+            addNewUserButton.getScene().getWindow().hide();
         });
 
         listOfUsersButton.setOnAction(event -> {
             LoadScenes.loadUserListWindow();
+            listOfUsersButton.getScene().getWindow().hide();
         });
-    }
 
-    public void transferMessage(User user) {
-        this.user = user;
+        changeAdminPasswordButton.setOnAction(event -> {
+            changeAdminPasswordButton.getScene().getWindow().hide();
+            LoadScenes.loadChangePasswordByAdminWindow(UserActions.getUser("ADMIN"));
+        });
+
+        exitButton.setOnAction(event -> {
+            Stage stage = (Stage) exitButton.getScene().getWindow();
+            stage.close();
+        });
     }
 }

@@ -14,7 +14,7 @@
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFF;">
          <children>
-            <JFXButton fx:id="aboutProgramButton" buttonType="RAISED" layoutX="449.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="151.0" ripplerFill="#14e4e4" styleClass="loginBtn" text="ABOUT">
+            <JFXButton fx:id="aboutProgramButton" buttonType="RAISED" layoutX="449.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="151.0" ripplerFill="#003153" styleClass="loginBtn" text="ABOUT">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -24,29 +24,29 @@
                   <Font name="Ebrima Bold" size="13.0" />
                </font>
             </Label>
-            <JFXButton fx:id="changePasswordButton" buttonType="RAISED" layoutX="282.0" layoutY="281.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#14e4e4" styleClass="loginBtn" text="CHANGE PASSWORD">
+            <JFXButton fx:id="changePasswordButton" buttonType="RAISED" layoutX="282.0" layoutY="281.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="CHANGE PASSWORD">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="exitButton" buttonType="RAISED" layoutX="626.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="151.0" ripplerFill="#14e4e4" styleClass="loginBtn" text="EXIT">
+            <JFXButton fx:id="exitButton" buttonType="RAISED" layoutX="626.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="151.0" ripplerFill="#003153" styleClass="loginBtn" text="EXIT">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
             <Line endX="200.0" layoutX="431.0" layoutY="261.0" startX="-200.0" />
             <Line endX="200.0" layoutX="431.0" layoutY="355.0" startX="-200.0" />
-            <Text fx:id="loginText" fill="#2ebcbc" layoutX="141.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO, XXXXXXX" textAlignment="CENTER" wrappingWidth="580.9999990463257">
+            <Text fx:id="loginText" fill="#003153" layoutX="141.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO, XXXXXXX" textAlignment="CENTER" wrappingWidth="580.9999990463257">
                <font>
                   <Font name="Ebrima Bold" size="20.0" />
                </font>
             </Text>
-            <Text fill="#2ebcbc" layoutX="141.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU CAN CHANGE YOUR PASSWORD" textAlignment="CENTER" wrappingWidth="580.9999990463257">
+            <Text fill="#003153" layoutX="141.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU CAN CHANGE YOUR PASSWORD" textAlignment="CENTER" wrappingWidth="580.9999990463257">
                <font>
                   <Font name="Ebrima Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="passwordExpirationDateText" fill="#2ebcbc" layoutX="141.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD EXPIRATION DATE - 20/11/2020" textAlignment="CENTER" wrappingWidth="580.9999990463257">
+            <Text fx:id="passwordExpirationDateText" fill="#003153" layoutX="141.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD EXPIRATION DATE - 20/11/2020" textAlignment="CENTER" wrappingWidth="580.9999990463257">
                <font>
                   <Font name="Ebrima Bold" size="20.0" />
                </font>
@@ -55,10 +55,10 @@
       </Pane>
       <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/shield_logo.png" />
+            <Image url="@../sources/images/shield-logo-png-transparent.png" />
          </image>
       </ImageView>
-      <Label layoutX="33.0" layoutY="114.0" text="BARTSEV" textFill="#2ebcbc">
+      <Label layoutX="26.0" layoutY="114.0" text="BULWARK" textFill="#003153">
          <font>
             <Font name="Ebrima Bold" size="22.0" />
          </font>

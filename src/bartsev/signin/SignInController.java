@@ -1,7 +1,8 @@
 package bartsev.signin;
 
-import bartsev.LoadScenes;
-import bartsev.users.User;
+import bartsev.helpers.LoadScenes;
+import bartsev.helpers.SignIn;
+import bartsev.models.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -26,10 +27,9 @@ public class SignInController {
             String password = passwordField.getText().trim();
             if (!(login.isEmpty() || (password.isEmpty()))) {
                 SignIn signIn = new SignIn(login, password);
-
                 if (signIn.isAdmin()) {
                     authSignInButton.getScene().getWindow().hide();
-                    LoadScenes.loadAdminWindow(user);
+                    LoadScenes.loadAdminWindow();
                 } else {
                     user = null;
                     user = signIn.findUser();

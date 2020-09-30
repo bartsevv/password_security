@@ -1,13 +1,13 @@
 package bartsev.adminpanel.addnewuser;
 
-import bartsev.users.User;
-import bartsev.users.UserActions;
+import bartsev.helpers.LoadScenes;
+import bartsev.helpers.ValidateData;
+import bartsev.models.User;
+import bartsev.helpers.UserActions;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class AddNewUserController {
@@ -29,14 +29,19 @@ public class AddNewUserController {
         addNewUserButton.setOnAction(event -> {
             String login = userLogin.getText();
             String password = userPassword.getText();
-
-            User user = new User(login, password, LocalDate.now(), UserActions.ACTIVATED_USER);
-            try {
-                UserActions.addNewUser(user);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (!(login.trim().isEmpty() || password.trim().isEmpty())) {
+                User user = new User(login, password, LocalDate.now(), UserActions.ACTIVATED_USER);
+                if (new ValidateData(user.getLogin(), user.getPassword()).validateData()) {
+                    UserActions.addNewUser(user);
+                    addNewUserButton.getScene().getWindow().hide();
+                    LoadScenes.loadAdminWindow();
+                }
             }
-            addNewUserButton.getScene().getWindow().hide();
+        });
+
+        cancelButton.setOnAction(event -> {
+            cancelButton.getScene().getWindow().hide();
+            LoadScenes.loadAdminWindow();
         });
     }
 

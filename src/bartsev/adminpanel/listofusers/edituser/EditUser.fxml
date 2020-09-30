@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@../../../sources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bartsev.adminpanel.listofusers.edituser.EditUserController">
+    <children>
+        <Pane layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFF;">
+            <children>
+                <Label layoutX="42.0" layoutY="127.0" prefHeight="50.0" prefWidth="114.0" text="Admin Panel" textFill="#a3a3a3">
+                    <font>
+                        <Font name="Ebrima Bold" size="13.0" />
+                    </font>
+                </Label>
+                <JFXButton fx:id="passwordRestrictions" buttonType="RAISED" layoutX="258.0" layoutY="308.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="PASSWORD RESTRICTIONS">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="changeUserPasswordButton" buttonType="RAISED" layoutX="258.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="CHANGE USER PASSWORD">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="backToUserListButton" buttonType="RAISED" layoutX="568.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="199.0" ripplerFill="#003153" styleClass="loginBtn" text="BACK TO ADMIN PANEL">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <Label layoutX="325.0" layoutY="22.0" text="USER CARD" textFill="#003153">
+                    <font>
+                        <Font name="Ebrima Bold" size="22.0" />
+                    </font>
+                </Label>
+            <Label layoutX="219.0" layoutY="63.0" text="Login:" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="90.0" text="Password:" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="120.0" text="Password expiration date:" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="loginText" layoutX="294.0" layoutY="50.0" prefHeight="50.0" prefWidth="288.0" text="login" textFill="#a3a3a3">
+               <font>
+                  <Font name="Ebrima Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordText" layoutX="325.0" layoutY="77.0" prefHeight="50.0" prefWidth="294.0" text="password" textFill="#a3a3a3">
+               <font>
+                  <Font name="Ebrima Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="expirationDateText" layoutX="463.0" layoutY="108.0" prefHeight="50.0" prefWidth="183.0" text="expiration" textFill="#a3a3a3">
+               <font>
+                  <Font name="Ebrima Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="195.0" text="ACCOUNT MANAGEMENT" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="22.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="deactivateUserButton" buttonType="RAISED" layoutX="258.0" layoutY="377.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="DEACTIVATE USER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="219.0" layoutY="149.0" text="Status:" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="statusText" layoutX="294.0" layoutY="137.0" prefHeight="50.0" prefWidth="191.0" text="status" textFill="#a3a3a3">
+               <font>
+                  <Font name="Ebrima Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="84.0" fitWidth="90.0" layoutX="41.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../sources/images/shield-logo-png-transparent.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="deleteUserButton" buttonType="RAISED" layoutX="257.0" layoutY="447.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="DELETE USER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="updateUserCardButton" buttonType="RAISED" layoutX="627.0" layoutY="45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="114.0" ripplerFill="#003153" styleClass="loginBtn" text="UPDATE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="594.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../sources/images/update_user_card.png" />
+               </image>
+            </ImageView>
+              <Label layoutX="24.0" layoutY="113.0" text="BULWARK" textFill="#003153">
+                  <font>
+                      <Font name="Ebrima Bold" size="22.0" />
+                  </font>
+              </Label>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
