@@ -31,7 +31,8 @@ public class AddNewUserController {
             String password = userPassword.getText();
             if (!(login.trim().isEmpty() || password.trim().isEmpty())) {
                 User user = new User(login, password, LocalDate.now(), UserActions.ACTIVATED_USER);
-                if (new ValidateData(user.getLogin(), user.getPassword()).validateData()) {
+                ValidateData validateData = new ValidateData(user.getLogin(), user.getPassword());
+                if (validateData.validateLoginAndPassword() && validateData.validateUser()) {
                     UserActions.addNewUser(user);
                     addNewUserButton.getScene().getWindow().hide();
                     LoadScenes.loadAdminWindow();

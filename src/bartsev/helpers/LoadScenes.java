@@ -1,5 +1,6 @@
 package bartsev.helpers;
 
+import bartsev.Launch;
 import bartsev.adminpanel.aboutprogram.AboutProgramController;
 import bartsev.adminpanel.changepassword.ChangeAdminPasswordController;
 import bartsev.adminpanel.listofusers.UserListController;
@@ -13,6 +14,7 @@ import bartsev.userwindow.changepassword.ChangePasswordController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -198,6 +200,7 @@ public class LoadScenes {
     private static void loadStage(Parent root, String title) {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image(Launch.class.getResourceAsStream("sources/images/shield_logo_on_left_board.png")));
         stage.setTitle(title);
         stage.show();
     }

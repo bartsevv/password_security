@@ -1,7 +1,11 @@
 package bartsev.helpers;
 
+import bartsev.models.User;
 import bartsev.models.UserRestrictions;
 import javafx.scene.control.Alert;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class ValidateData {
     private final static Integer minLoginLength = 4;
@@ -45,7 +49,16 @@ public class ValidateData {
         return requiredPasswordNumbers;
     }
 
-    public Boolean validateData() {
+    public Boolean validateUser() {
+        if (UserActions.getUser(login) == null) {
+            return true;
+        } else {
+            Tools.showWarningAlert("Пользователь с таким логином уже существует.");
+            return false;
+        }
+    }
+
+    public Boolean validateLoginAndPassword() {
         return ((validateLogin()) && (validatePassword()));
     }
 
@@ -56,9 +69,8 @@ public class ValidateData {
             requiredLoginLength = true;
         }
 
-        String loginErorr = "";
         if (!getRequiredLoginLength()) {
-            loginErorr = loginErorr + "логин должен содержать минимум 4 символа";
+            showAlertWithError("логин", "логин должен содержать минимум 4 символа");
             return false;
         }
         return true;

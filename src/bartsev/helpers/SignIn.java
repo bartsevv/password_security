@@ -41,7 +41,8 @@ public class SignIn {
         if (!(user.getPassword().equals(password))) {
             Tools.showWarningAlert(INCORRECT_PASSWORD_MESSAGE);
         } else {
-            if ((Duration.between(user.getDateOfCreation().atStartOfDay(), LocalDateTime.now()).toDays() > 25) && (userRestrictions.getSecondRestriction())) {
+            if ((Duration.between(user.getDateOfCreation().atStartOfDay(), LocalDateTime.now()).toDays() > 25)
+                    && (userRestrictions.getSecondRestriction())) {
                 Tools.showWarningAlert(EXPIRATION_DATE);
                 LoadScenes.loadChangeRottenPasswordWindow(user, userRestrictions);
             } else {
