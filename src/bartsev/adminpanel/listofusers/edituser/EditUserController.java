@@ -41,6 +41,9 @@ public class EditUserController {
     private JFXButton updateUserCardButton;
 
     @FXML
+    private JFXButton accessToUsbButton;
+
+    @FXML
     void initialize() {
         updateUserCardButton.setOnAction(event -> {
             user = UserActions.getUser(user.getLogin());

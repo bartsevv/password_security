@@ -30,6 +30,9 @@ public class UserWindowController implements Initializable {
     @FXML
     private Text passwordExpirationDateText;
 
+    @FXML
+    private JFXButton checkUsbButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         changePasswordButton.setOnAction(event -> {
@@ -45,6 +48,11 @@ public class UserWindowController implements Initializable {
         aboutProgramButton.setOnAction(event -> {
             aboutProgramButton.getScene().getWindow().hide();
             LoadScenes.loadAboutProgramFromUserPanel(user);
+        });
+
+        checkUsbButton.setOnAction(event -> {
+            // если у пользователя есть доступ к вставленной флешке, то тогда выдать успешный алерт, иначе неуспешный
+            // в Tools дописать успешный алерт
         });
     }
 

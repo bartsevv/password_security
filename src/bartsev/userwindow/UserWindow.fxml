@@ -35,7 +35,7 @@
                </font>
             </JFXButton>
             <Line endX="200.0" layoutX="431.0" layoutY="261.0" startX="-200.0" />
-            <Line endX="200.0" layoutX="431.0" layoutY="355.0" startX="-200.0" />
+            <Line endX="200.0" layoutX="432.0" layoutY="437.0" startX="-200.0" />
             <Text fx:id="loginText" fill="#003153" layoutX="141.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO, XXXXXXX" textAlignment="CENTER" wrappingWidth="580.9999990463257">
                <font>
                   <Font name="Ebrima Bold" size="20.0" />
@@ -51,6 +51,11 @@
                   <Font name="Ebrima Bold" size="20.0" />
                </font>
             </Text>
+            <JFXButton fx:id="checkUsbButton" buttonType="RAISED" layoutX="282.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="CHECK USB-FLASHCARD">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
          </children>
       </Pane>
       <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
