@@ -12,4 +12,14 @@ public class Tools {
 
         alert.showAndWait();
     }
+
+    public static void showSuccessAlert(String contentText) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Успех");
+
+        alert.setHeaderText(null);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
 }

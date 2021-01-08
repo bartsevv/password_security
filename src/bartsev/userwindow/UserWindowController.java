@@ -1,6 +1,7 @@
 package bartsev.userwindow;
 
 import bartsev.helpers.LoadScenes;
+import bartsev.helpers.Tools;
 import bartsev.models.User;
 import bartsev.helpers.UserActions;
 import com.jfoenix.controls.JFXButton;
@@ -8,8 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import net.samuelcampos.usbdrivedetector.USBDeviceDetectorManager;
+import net.samuelcampos.usbdrivedetector.USBStorageDevice;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserWindowController implements Initializable {
@@ -60,5 +64,6 @@ public class UserWindowController implements Initializable {
         this.user = user;
         loginText.setText(("HELLO, " + user.getLogin()).toUpperCase());
         passwordExpirationDateText.setText("PASSWORD EXPIRATION DATE - " + user.getDateOfCreation());
+        //UserActions.synhronizeUsersWithAccessToUsb();
     }
 }

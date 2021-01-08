@@ -41,7 +41,7 @@ public class PasswordRestrictionsController {
 
     public void transferMessage(User user) {
         this.user = user;
-        UserActions.synhronizeTwoFiles();
+        //UserActions.synhronizeUsersWithRestrictions();
         UserRestrictions userRestrictions = UserActions.getUserRestrictions(user.getLogin());
         firstRestriction.setSelected(userRestrictions.getFirstRestriction());
         secondRestriction.setSelected(userRestrictions.getSecondRestriction());

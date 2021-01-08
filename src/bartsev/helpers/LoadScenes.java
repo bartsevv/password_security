@@ -5,6 +5,7 @@ import bartsev.adminpanel.aboutprogram.AboutProgramController;
 import bartsev.adminpanel.changepassword.ChangeAdminPasswordController;
 import bartsev.adminpanel.listofusers.UserListController;
 import bartsev.adminpanel.listofusers.edituser.EditUserController;
+import bartsev.adminpanel.listofusers.edituser.accesses.AccessToUsbController;
 import bartsev.adminpanel.listofusers.edituser.restrictions.PasswordRestrictionsController;
 import bartsev.models.User;
 import bartsev.models.UserRestrictions;
@@ -29,6 +30,7 @@ public class LoadScenes {
     private final static String PATH_TO_CHANGE_ADMIN_PASSWORD_BY_ADMIN_WINDOW = "/bartsev/adminpanel/changepassword/ChangeAdminPassword.fxml";
     private final static String PATH_TO_CHANGE_USER_PASSWORD_BY_ADMIN_WINDOW = "/bartsev/adminpanel/listofusers/edituser/changeuserpassword/ChangePassword.fxml";
     private final static String PATH_TO_PASSWORD_RESTRICTIONS_WINDOW = "/bartsev/adminpanel/listofusers/edituser/restrictions/PasswordRestrictions.fxml";
+    private final static String PATH_TO_USER_ACCESS_WINDOW = "/bartsev/adminpanel/listofusers/edituser/accesses/AccessToUsb.fxml";
     private final static String PATH_TO_ABOUT_PROGRAM_FROM_ADMIN_PANEL = "/bartsev/adminpanel/aboutprogram/AboutProgram.fxml";
     private final static String PATH_TO_ABOUT_PROGRAM_FROM_USER_PANEL = "/bartsev/userwindow/aboutprogram/AboutProgram.fxml";
 
@@ -195,6 +197,21 @@ public class LoadScenes {
         sceneController.transferMessage(user);
 
         loadStage(root, "Change password");
+    }
+
+    public static void loadUserAccessWindow(User user) {
+        FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_USER_ACCESS_WINDOW));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AccessToUsbController sceneController = loader.getController();
+        sceneController.transferMessage(user);
+
+        loadStage(root, "Change access");
     }
 
     private static void loadStage(Parent root, String title) {

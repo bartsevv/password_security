@@ -72,9 +72,15 @@ public class EditUserController {
                 user.setStatus(UserActions.ACTIVATED_USER);
             }
         });
+
         passwordRestrictions.setOnAction(event -> {
             LoadScenes.loadPasswordRestrictionsWindow(user);
             passwordRestrictions.getScene().getWindow().hide();
+        });
+
+        accessToUsbButton.setOnAction(event -> {
+            LoadScenes.loadUserAccessWindow(user);
+            accessToUsbButton.getScene().getWindow().hide();
         });
 
         backToUserListButton.setOnAction(event -> {
