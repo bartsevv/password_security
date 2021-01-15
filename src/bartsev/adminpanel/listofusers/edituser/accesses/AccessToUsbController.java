@@ -4,12 +4,9 @@ import bartsev.helpers.LoadScenes;
 import bartsev.helpers.UserActions;
 import bartsev.models.User;
 import bartsev.models.UserAccess;
-import bartsev.models.UserRestrictions;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 
 public class AccessToUsbController {
     private final static String FIRST_DEVICE = "ANG";
@@ -17,16 +14,16 @@ public class AccessToUsbController {
     private User user;
 
     @FXML
-    private Button saveButton;
+    private JFXButton saveButton;
 
     @FXML
-    private CheckBox firstDevice;
+    private JFXCheckBox firstDevice;
 
     @FXML
-    private CheckBox secondDevice;
+    private JFXCheckBox secondDevice;
 
     @FXML
-    private Button backToUserCardButton;
+    private JFXButton backToUserCardButton;
 
     @FXML
     void initialize() {

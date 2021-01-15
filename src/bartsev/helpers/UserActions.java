@@ -389,7 +389,7 @@ public class UserActions {
                 break;
             }
         }
-        clearTheFile(FILE_PATH_TO_RESTRICTIONS);
+        clearTheFile(FILE_PATH_TO_ACCESS);
         for (UserAccess selectUser : userAccessList) {
             addNewUserAccess(selectUser);
         }
