@@ -9,6 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +20,7 @@ public class UserActions {
     private final static String FILE_PATH_TO_USERLIST = "src/bartsev/sources/users/listofusers.txt";
     private final static String FILE_PATH_TO_RESTRICTIONS = "src/bartsev/sources/users/userrestrictions.txt";
     private final static String FILE_PATH_TO_ACCESS = "src/bartsev/sources/users/usersusbaccess.txt";
+    private final static String FILE_PATH_TO_LOGS = "src/bartsev/sources/users/logs.txt";
     public final static String DEACTIVATED_USER = "Deactivated";
     public final static String ACTIVATED_USER = "Activated";
 
@@ -38,6 +41,23 @@ public class UserActions {
         }
         addNewUserRestrictions(new UserRestrictions(user.getLogin(), true, true, true));
         addNewUserAccess(new UserAccess(user.getLogin(), "n/a", "n/a"));
+    }
+
+    public static void addNewLogAboutAccess(UserAccess userAccess) {
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(FILE_PATH_TO_LOGS, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedWriter bufferWriter = new BufferedWriter(writer);
+        try {
+            bufferWriter.write("Пользователь '" + userAccess.getLogin() + "' пытался получить неправомерный доступ в " + LocalDateTime.now().toString().replace('T', ' '));
+            bufferWriter.newLine();
+            bufferWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static User getUser(String login)  {
@@ -114,6 +134,10 @@ public class UserActions {
             userList.add(tempUser);
         }
         return userList;
+    }
+
+    public static List<String> getLogList() throws IOException {
+        return new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_LOGS), StandardCharsets.UTF_8));
     }
 
     public static void deleteUser(String login) {

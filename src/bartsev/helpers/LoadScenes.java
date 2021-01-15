@@ -6,6 +6,7 @@ import bartsev.adminpanel.changepassword.ChangeAdminPasswordController;
 import bartsev.adminpanel.listofusers.UserListController;
 import bartsev.adminpanel.listofusers.edituser.EditUserController;
 import bartsev.adminpanel.listofusers.edituser.accesses.AccessToUsbController;
+import bartsev.adminpanel.listofusers.edituser.accesses.LogsController;
 import bartsev.adminpanel.listofusers.edituser.restrictions.PasswordRestrictionsController;
 import bartsev.models.User;
 import bartsev.models.UserRestrictions;
@@ -212,6 +213,10 @@ public class LoadScenes {
         sceneController.transferMessage(user);
 
         loadStage(root, "Change access");
+    }
+
+    public static void loadLogsWindow() throws IOException {
+        new LogsController().initialize();
     }
 
     private static void loadStage(Parent root, String title) {

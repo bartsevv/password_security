@@ -1,5 +1,6 @@
 package bartsev.userwindow;
 
+import bartsev.adminpanel.listofusers.edituser.accesses.LogsController;
 import bartsev.helpers.LoadScenes;
 import bartsev.helpers.Tools;
 import bartsev.helpers.UsbHelper;
@@ -72,6 +73,7 @@ public class UserWindowController implements Initializable {
             if (haveAccess) {
                 Tools.showSuccessAlert(accessToRemovableUsbNames);
             } else {
+                UserActions.addNewLogAboutAccess(userAccess);
                 Tools.showWarningAlert("У вас нет доступа к USB, которые используются на этом компьютере");
             }
             LoadScenes.loadUserWindow(user);

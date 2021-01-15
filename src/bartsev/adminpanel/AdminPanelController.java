@@ -7,6 +7,8 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class AdminPanelController {
     @FXML
     private JFXButton changeAdminPasswordButton;
@@ -22,6 +24,9 @@ public class AdminPanelController {
 
     @FXML
     private JFXButton addNewUserButton;
+
+    @FXML
+    private JFXButton logsButton;
 
     @FXML
     void initialize() {
@@ -43,6 +48,15 @@ public class AdminPanelController {
         aboutProgramButton.setOnAction(event -> {
             aboutProgramButton.getScene().getWindow().hide();
             LoadScenes.loadAboutProgramFromAdminPanel();
+        });
+
+        logsButton.setOnAction(event -> {
+            aboutProgramButton.getScene().getWindow().hide();
+            try {
+                LoadScenes.loadLogsWindow();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         exitButton.setOnAction(event -> {
