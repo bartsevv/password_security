@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +20,59 @@ public class UserActions {
     private final static String FILE_PATH_TO_RESTRICTIONS = "src/bartsev/sources/users/userrestrictions.txt";
     private final static String FILE_PATH_TO_ACCESS = "src/bartsev/sources/users/usersusbaccess.txt";
     private final static String FILE_PATH_TO_LOGS = "src/bartsev/sources/users/logs.txt";
+    private final static String FILE_PATH_TO_MAGIC_SQUARE = "src/bartsev/sources/users/magicsquare.txt";
     public final static String DEACTIVATED_USER = "Deactivated";
     public final static String ACTIVATED_USER = "Activated";
+
+    private static void changePasswordWithNewMagicSquare() {
+        List<User> userList = getUserList();
+        for (User user : userList) {
+            changeUserPassword(user, user.getPassword());
+        }
+    }
+
+    public static void addNewMagicSquare(int[][] magicSquare) {
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(FILE_PATH_TO_MAGIC_SQUARE);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        pw.close();
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(FILE_PATH_TO_MAGIC_SQUARE, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedWriter bufferWriter = new BufferedWriter(writer);
+        try {
+            for (int i = 0; i < magicSquare.length; i++) {
+                for (int j = 0; j < magicSquare[i].length; j++) {
+                    bufferWriter.write(String.valueOf(magicSquare[i][j]));
+                    bufferWriter.newLine();
+                }
+            }
+            bufferWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        changePasswordWithNewMagicSquare();
+    }
+
+    public static int[][] getMagicSquareFromFile() {
+        List<String> stringList = null;
+        try {
+            stringList = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_MAGIC_SQUARE), StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<Integer> magicList = new ArrayList<>();
+        for (String str : stringList) {
+            magicList.add(Integer.parseInt(str));
+        }
+        return MagicSquare.intListTo2DArray(magicList);
+    }
 
     public static void addNewUser(User user) {
         FileWriter writer = null;
@@ -60,7 +110,7 @@ public class UserActions {
         }
     }
 
-    public static User getUser(String login)  {
+    public static User getUser(String login) {
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(FILE_PATH_TO_USERLIST));
@@ -98,12 +148,8 @@ public class UserActions {
     }
 
     public static void changeUserPassword(User user, String newPassword) {
-        List<User> userList = new ArrayList<>();
-        try {
-            userList = getUserList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        newPassword = MagicSquare.encryptMagicSquare(newPassword);
+        List<User> userList = getUserList();
 
         for (User selectUser : userList) {
             if (selectUser.getLogin().equals(user.getLogin())) {
@@ -123,8 +169,13 @@ public class UserActions {
         return period.getDays() <= 30;
     }
 
-    public static List<User> getUserList() throws IOException {
-        List<String> listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_USERLIST), StandardCharsets.UTF_8));
+    public static List<User> getUserList() {
+        List<String> listOfUsers = null;
+        try {
+            listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_USERLIST), StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         List<User> userList = new ArrayList<>();
         User tempUser;
         List<String> selectLine = new ArrayList<>();
@@ -136,17 +187,17 @@ public class UserActions {
         return userList;
     }
 
-    public static List<String> getLogList() throws IOException {
-        return new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_LOGS), StandardCharsets.UTF_8));
-    }
-
-    public static void deleteUser(String login) {
-        List<User> userList = new ArrayList<>();
+    public static List<String> getLogList() {
         try {
-            userList = getUserList();
+            return new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_LOGS), StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    public static void deleteUser(String login) {
+        List<User> userList = getUserList();
         for (User selectUser : userList) {
             if (selectUser.getLogin().equals(login)) {
                 userList.remove(selectUser);
@@ -161,11 +212,7 @@ public class UserActions {
 
     public static void changeUserStatus(String login, Boolean status) {
         List<User> userList = new ArrayList<>();
-        try {
-            userList = getUserList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        userList = getUserList();
 
         for (User selectUser : userList) {
             if (selectUser.getLogin().equals(login)) {
@@ -199,20 +246,16 @@ public class UserActions {
     public static void synhronizeUsersWithRestrictions() {
         List<User> userList = new ArrayList<>();
         List<UserRestrictions> userRestrictionsList = new ArrayList<>();
-        try {
-            userList = getUserList();
-            userRestrictionsList = getListUserRestrictions();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        userList = getUserList();
+        userRestrictionsList = getListUserRestrictions();
 
-        for (User user: userList) {
+        for (User user : userList) {
             if (getUserRestrictions(user.getLogin()) == null) {
                 addNewUserRestrictions(new UserRestrictions(user.getLogin(), true, true, true));
             }
         }
 
-        for (UserRestrictions userRestrictions: userRestrictionsList) {
+        for (UserRestrictions userRestrictions : userRestrictionsList) {
             if (getUser(userRestrictions.getLogin()) == null) {
                 deleteUser(userRestrictions.getLogin());
             }
@@ -222,28 +265,29 @@ public class UserActions {
     public static void synhronizeUsersWithAccessToUsb() {
         List<User> userList = new ArrayList<>();
         List<UserAccess> userAccesses = new ArrayList<>();
-        try {
-            userList = getUserList();
-            userAccesses = getListUserAccess();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        userList = getUserList();
+        userAccesses = getListUserAccess();
 
-        for (User user: userList) {
+        for (User user : userList) {
             if (getUserAccess(user.getLogin()) == null) {
                 addNewUserAccess(new UserAccess(user.getLogin(), "n/a", "n/a"));
             }
         }
 
-        for (UserAccess userAccess: userAccesses) {
+        for (UserAccess userAccess : userAccesses) {
             if (getUser(userAccess.getLogin()) == null) {
                 deleteUser(userAccess.getLogin());
             }
         }
     }
 
-    private static List<UserRestrictions> getListUserRestrictions() throws IOException {
-        List<String> listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_RESTRICTIONS), StandardCharsets.UTF_8));
+    private static List<UserRestrictions> getListUserRestrictions() {
+        List<String> listOfUsers = null;
+        try {
+            listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_RESTRICTIONS), StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         List<UserRestrictions> userRestrictions = new ArrayList<>();
         UserRestrictions tempUserRestrictions;
         List<String> selectLine = new ArrayList<>();
@@ -255,8 +299,13 @@ public class UserActions {
         return userRestrictions;
     }
 
-    private static List<UserAccess> getListUserAccess() throws IOException {
-        List<String> listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_ACCESS), StandardCharsets.UTF_8));
+    private static List<UserAccess> getListUserAccess() {
+        List<String> listOfUsers = null;
+        try {
+            listOfUsers = new ArrayList<>(Files.readAllLines(Paths.get(FILE_PATH_TO_ACCESS), StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         List<UserAccess> userAccesses = new ArrayList<>();
         UserAccess tempUserAccess;
         List<String> selectLine = new ArrayList<>();
@@ -339,7 +388,7 @@ public class UserActions {
         return null;
     }
 
-    public static UserRestrictions getUserRestrictions(String login)  {
+    public static UserRestrictions getUserRestrictions(String login) {
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(FILE_PATH_TO_RESTRICTIONS));
@@ -378,11 +427,7 @@ public class UserActions {
 
     public static void changeUserRestrictions(UserRestrictions userRestrictions) {
         List<UserRestrictions> userRestrictionsList = new ArrayList<>();
-        try {
-            userRestrictionsList = getListUserRestrictions();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        userRestrictionsList = getListUserRestrictions();
 
         for (UserRestrictions selectUser : userRestrictionsList) {
             if (selectUser.getLogin().equals(userRestrictions.getLogin())) {
@@ -400,11 +445,7 @@ public class UserActions {
 
     public static void changeUserAccess(UserAccess userAccess) {
         List<UserAccess> userAccessList = new ArrayList<>();
-        try {
-            userAccessList = getListUserAccess();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        userAccessList = getListUserAccess();
 
         for (UserAccess selectUser : userAccessList) {
             if (selectUser.getLogin().equals(userAccess.getLogin())) {

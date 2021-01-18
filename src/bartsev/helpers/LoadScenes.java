@@ -8,6 +8,7 @@ import bartsev.adminpanel.listofusers.edituser.EditUserController;
 import bartsev.adminpanel.listofusers.edituser.accesses.AccessToUsbController;
 import bartsev.adminpanel.listofusers.edituser.accesses.LogsController;
 import bartsev.adminpanel.listofusers.edituser.restrictions.PasswordRestrictionsController;
+import bartsev.adminpanel.magicsquare.MagicSquareController;
 import bartsev.models.User;
 import bartsev.models.UserRestrictions;
 import bartsev.signin.rottenpassword.RottenPasswordController;
@@ -34,6 +35,7 @@ public class LoadScenes {
     private final static String PATH_TO_USER_ACCESS_WINDOW = "/bartsev/adminpanel/listofusers/edituser/accesses/AccessToUsb2.fxml";
     private final static String PATH_TO_ABOUT_PROGRAM_FROM_ADMIN_PANEL = "/bartsev/adminpanel/aboutprogram/AboutProgram.fxml";
     private final static String PATH_TO_ABOUT_PROGRAM_FROM_USER_PANEL = "/bartsev/userwindow/aboutprogram/AboutProgram.fxml";
+    private final static String PATH_TO_MAGIC_SQUARE = "/bartsev/adminpanel/magicsquare/MagicSquare.fxml";
 
     public static void loadUserWindow(User user) {
         FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_USER_WINDOW));
@@ -217,6 +219,20 @@ public class LoadScenes {
 
     public static void loadLogsWindow() throws IOException {
         new LogsController().initialize();
+    }
+
+    public static void loadMagicSquare() {
+        FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_MAGIC_SQUARE));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        MagicSquareController sceneController = loader.getController();
+
+        loadStage(root, "Edit magic square");
     }
 
     private static void loadStage(Parent root, String title) {

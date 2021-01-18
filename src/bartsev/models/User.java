@@ -1,5 +1,7 @@
 package bartsev.models;
 
+import bartsev.helpers.MagicSquare;
+
 import java.time.LocalDate;
 
 public class User {
@@ -20,7 +22,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = MagicSquare.encryptMagicSquare(password);
     }
 
     public void setDateOfCreation(LocalDate dateOfCreation) {
@@ -32,7 +34,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return MagicSquare.decryptMagicSquare(password);
     }
 
     public LocalDate getDateOfCreation() {

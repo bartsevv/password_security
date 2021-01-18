@@ -73,7 +73,12 @@
             <Line endX="200.0" layoutX="431.0" layoutY="317.0" startX="-200.0" />
             <Line endX="200.0" layoutX="431.0" layoutY="37.0" startX="-200.0" />
             <Line endX="200.0" layoutX="431.0" layoutY="483.0" startX="-200.0" />
-            <JFXButton fx:id="logsButton" buttonType="RAISED" layoutX="281.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="LOGS">
+            <JFXButton fx:id="logsButton" buttonType="RAISED" layoutX="281.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="138.0" ripplerFill="#003153" styleClass="loginBtn" text="LOGS">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="magicSquare" buttonType="RAISED" layoutX="446.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="132.0" ripplerFill="#003153" styleClass="loginBtn" text="MAGIC SQUARE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -1,9 +1,9 @@
 package bartsev.adminpanel.addnewuser;
 
 import bartsev.helpers.LoadScenes;
+import bartsev.helpers.UserActions;
 import bartsev.helpers.ValidateData;
 import bartsev.models.User;
-import bartsev.helpers.UserActions;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

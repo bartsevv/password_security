@@ -1,8 +1,8 @@
 package bartsev.adminpanel.changepassword;
 
 import bartsev.helpers.LoadScenes;
-import bartsev.models.User;
 import bartsev.helpers.UserActions;
+import bartsev.models.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

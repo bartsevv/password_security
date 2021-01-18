@@ -31,7 +31,7 @@ public class SignInController {
             } else {
                 count--;
                 String login = loginField.getText().trim();
-                String password = passwordField.getText ().trim();
+                String password = passwordField.getText().trim();
                 if (!(login.isEmpty() || (password.isEmpty()))) {
                     SignIn signIn = new SignIn(login, password);
                     if (signIn.isAdmin()) {

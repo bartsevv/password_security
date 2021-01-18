@@ -4,7 +4,8 @@ import java.util.List;
 
 public class MagicSquare {
 
-    public static String encryptMagicSquare(int[][] matrix, String word) {
+    public static String encryptMagicSquare(String word) {
+        int[][] matrix = UserActions.getMagicSquareFromFile();
         if (word.length() != 25) {
             word = word + getStarString(25 - word.length());
         }
@@ -17,7 +18,8 @@ public class MagicSquare {
         return encryptedWord;
     }
 
-    public static String decryptMagicSquare(int[][] matrix, String word) {
+    public static String decryptMagicSquare(String word) {
+        int[][] matrix = UserActions.getMagicSquareFromFile();
         String decryptedWord = "";
         for (int m = 1; m <= 25; m++) {
             for (int i = 0; i < matrix.length; i++) {
@@ -32,7 +34,8 @@ public class MagicSquare {
     }
 
 
-    public static Boolean isMagicSquare(int mat[][]) {
+    public static Boolean isMagicSquare(List<Integer> list) {
+        int mat[][] = intListTo2DArray(list);
         int N = 5;
         int sum = 0, sum2 = 0;
         for (int i = 0; i < N; i++)
@@ -70,7 +73,7 @@ public class MagicSquare {
         return matrix;
     }
 
-    public static void printStringAsMatrix(String list) {
+    private static void printStringAsMatrix(String list) {
         int k = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -81,7 +84,7 @@ public class MagicSquare {
         }
     }
 
-    public static void printMatrix(int[][] array) {
+    private static void printMatrix(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 System.out.print(array[i][j] + "\t");
@@ -90,7 +93,7 @@ public class MagicSquare {
         }
     }
 
-    public static String getStarString(int length) {
+    private static String getStarString(int length) {
         String s = "";
         while (s.length() < length) {
             s = s + "*";

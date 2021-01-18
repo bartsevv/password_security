@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@../../sources/stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bartsev.adminpanel.magicsquare.MagicSquareController">
+    <children>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFF;">
+            <children>
+            <Label layoutX="38.0" layoutY="127.0" prefHeight="50.0" prefWidth="114.0" text="Admin Panel" textFill="#a3a3a3">
+               <font>
+                  <Font name="Ebrima Bold" size="13.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="addNewMagicSquare" buttonType="RAISED" layoutX="275.0" layoutY="212.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="ADD NEW MAGIC SQUARE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="viewMagicSquare" buttonType="RAISED" layoutX="275.0" layoutY="287.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="VIEW MAGIC SQUARE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="backToAdminPanel" buttonType="RAISED" layoutX="567.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="210.0" ripplerFill="#003153" styleClass="loginBtn" text="BACK TO ADMIN PANEL">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="311.0" layoutY="164.0" text="EDIT MAGIC SQUARE" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="22.0" />
+               </font>
+            </Label>
+            <Line endX="200.0" layoutX="425.0" layoutY="397.0" startX="-200.0" />
+            <Line endX="200.0" layoutX="425.0" layoutY="117.0" startX="-200.0" />
+            </children>
+        </Pane>
+          <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@../../sources/images/shield-logo-png-transparent.png" />
+              </image>
+          </ImageView>
+          <Label layoutX="24.0" layoutY="114.0" text="BULWARK" textFill="#003153">
+              <font>
+                  <Font name="Ebrima Bold" size="22.0" />
+              </font>
+          </Label>
+    </children>
+</AnchorPane>

@@ -29,6 +29,9 @@ public class AdminPanelController {
     private JFXButton logsButton;
 
     @FXML
+    private JFXButton magicSquare;
+
+    @FXML
     void initialize() {
         addNewUserButton.setOnAction(event -> {
             LoadScenes.loadAddNewUserWindow();
@@ -62,6 +65,11 @@ public class AdminPanelController {
         exitButton.setOnAction(event -> {
             Stage stage = (Stage) exitButton.getScene().getWindow();
             stage.close();
+        });
+
+        magicSquare.setOnAction(event -> {
+            aboutProgramButton.getScene().getWindow().hide();
+            LoadScenes.loadMagicSquare();
         });
     }
 }

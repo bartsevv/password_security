@@ -9,7 +9,6 @@ import bartsev.models.UserRestrictions;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import net.samuelcampos.usbdrivedetector.USBDeviceDetectorManager;
 
 import java.time.LocalDate;
 
