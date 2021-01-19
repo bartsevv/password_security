@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -233,6 +234,10 @@ public class LoadScenes {
         MagicSquareController sceneController = loader.getController();
 
         loadStage(root, "Edit magic square");
+    }
+
+    public static void loadFileChooser(User user) {
+        new FileChooserController().initialize(user);
     }
 
     private static void loadStage(Parent root, String title) {

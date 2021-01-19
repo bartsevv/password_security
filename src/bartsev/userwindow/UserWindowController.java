@@ -1,21 +1,20 @@
 package bartsev.userwindow;
 
-import bartsev.adminpanel.listofusers.edituser.accesses.LogsController;
 import bartsev.helpers.LoadScenes;
 import bartsev.helpers.Tools;
 import bartsev.helpers.UsbHelper;
-import bartsev.models.User;
 import bartsev.helpers.UserActions;
+import bartsev.models.User;
 import bartsev.models.UserAccess;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import net.samuelcampos.usbdrivedetector.USBDeviceDetectorManager;
-import net.samuelcampos.usbdrivedetector.USBStorageDevice;
 
-import javax.tools.Tool;
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,8 +40,19 @@ public class UserWindowController implements Initializable {
     @FXML
     private JFXButton checkUsbButton;
 
+    @FXML
+    private JFXButton selectImageButton;
+
+    @FXML
+    private ImageView imageUser;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        selectImageButton.setOnAction(event -> {
+            LoadScenes.loadFileChooser(user);
+        });
+
         changePasswordButton.setOnAction(event -> {
             changePasswordButton.getScene().getWindow().hide();
             LoadScenes.loadChangePasswordByUserWindow(user, UserActions.getUserRestrictions(user.getLogin()));
@@ -64,7 +74,7 @@ public class UserWindowController implements Initializable {
             List<String> removableUsbNames = UsbHelper.getListOfUsb();
             String accessToRemovableUsbNames = "У вас есть доступ к устройствам: ";
             Boolean haveAccess = false;
-            for(String usbName: removableUsbNames) {
+            for (String usbName : removableUsbNames) {
                 if (userAccess.getFirstDevice().equals(usbName) || userAccess.getSecondDevice().equals(usbName)) {
                     haveAccess = true;
                     accessToRemovableUsbNames = accessToRemovableUsbNames + usbName + "  ";
@@ -82,8 +92,11 @@ public class UserWindowController implements Initializable {
 
     public void transferMessage(User user) {
         this.user = user;
+        File f = new File(user.getLogin() + ".png");
+        if (f.exists()) {
+            imageUser.setImage(new Image(f.toURI().toString()));
+        }
         loginText.setText(("HELLO, " + user.getLogin()).toUpperCase());
         passwordExpirationDateText.setText("PASSWORD EXPIRATION DATE - " + user.getDateOfCreation());
-        //UserActions.synhronizeUsersWithAccessToUsb();
     }
 }
