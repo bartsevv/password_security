@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@../../sources/stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bartsev.adminpanel.magicsquare.ViewMagicSquareController">
+    <children>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFF;">
+            <children>
+            <Label layoutX="38.0" layoutY="127.0" prefHeight="50.0" prefWidth="114.0" text="Admin Panel" textFill="#a3a3a3">
+               <font>
+                  <Font name="Ebrima Bold" size="13.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="backToEditMagicSquare" buttonType="RAISED" layoutX="567.0" layoutY="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="210.0" ripplerFill="#003153" styleClass="loginBtn" text="BACK TO MAGIC SQUARE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="296.0" layoutY="60.0" text="VIEW MAGIC SQUARE" textFill="#003153">
+               <font>
+                  <Font name="Ebrima Bold" size="22.0" />
+               </font>
+            </Label>
+            <Line endX="200.0" layoutX="425.0" layoutY="373.0" startX="-200.0" />
+            <Line endX="200.0" layoutX="425.0" layoutY="117.0" startX="-200.0" />
+            <Label fx:id="l1" layoutX="340.0" layoutY="160.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+            </children>
+        </Pane>
+          <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="31.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@../../sources/images/shield-logo-png-transparent.png" />
+              </image>
+          </ImageView>
+          <Label layoutX="24.0" layoutY="114.0" text="BULWARK" textFill="#003153">
+              <font>
+                  <Font name="Ebrima Bold" size="22.0" />
+              </font>
+          </Label>
+      <Label fx:id="l2" layoutX="360.0" layoutY="160.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l3" layoutX="380.0" layoutY="160.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l4" layoutX="400.0" layoutY="160.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l5" layoutX="420.0" layoutY="160.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l6" layoutX="340.0" layoutY="190.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l7" layoutX="360.0" layoutY="190.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l8" layoutX="380.0" layoutY="190.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l9" layoutX="400.0" layoutY="190.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l10" layoutX="420.0" layoutY="190.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l11" layoutX="340.0" layoutY="220.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l12" layoutX="360.0" layoutY="220.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l13" layoutX="380.0" layoutY="220.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l14" layoutX="400.0" layoutY="220.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l15" layoutX="420.0" layoutY="220.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l16" layoutX="340.0" layoutY="250.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l17" layoutX="360.0" layoutY="250.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l18" layoutX="380.0" layoutY="250.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l19" layoutX="400.0" layoutY="250.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l20" layoutX="420.0" layoutY="250.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l21" layoutX="340.0" layoutY="280.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l22" layoutX="360.0" layoutY="280.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l23" layoutX="380.0" layoutY="280.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l24" layoutX="400.0" layoutY="280.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+      <Label fx:id="l25" layoutX="420.0" layoutY="280.0" prefHeight="20.0" prefWidth="20.0" text="Label" />
+    </children>
+</AnchorPane>

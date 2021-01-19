@@ -37,6 +37,8 @@ public class LoadScenes {
     private final static String PATH_TO_ABOUT_PROGRAM_FROM_ADMIN_PANEL = "/bartsev/adminpanel/aboutprogram/AboutProgram.fxml";
     private final static String PATH_TO_ABOUT_PROGRAM_FROM_USER_PANEL = "/bartsev/userwindow/aboutprogram/AboutProgram.fxml";
     private final static String PATH_TO_MAGIC_SQUARE = "/bartsev/adminpanel/magicsquare/MagicSquare.fxml";
+    private final static String PATH_TO_VIEW_MAGIC_SQUARE = "/bartsev/adminpanel/magicsquare/ViewMagicSquare.fxml";
+    private final static String PATH_TO_EDIT_MAGIC_SQUARE = "/bartsev/adminpanel/magicsquare/AddNewMagicSquare.fxml";
 
     public static void loadUserWindow(User user) {
         FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_USER_WINDOW));
@@ -232,6 +234,30 @@ public class LoadScenes {
         }
 
         MagicSquareController sceneController = loader.getController();
+
+        loadStage(root, "Edit magic square");
+    }
+
+    public static void loadViewMagicSquare() {
+        FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_VIEW_MAGIC_SQUARE));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        loadStage(root, "View magic square");
+    }
+
+    public static void loadEditMagicSquare() {
+        FXMLLoader loader = new FXMLLoader(LoadScenes.class.getResource(PATH_TO_EDIT_MAGIC_SQUARE));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         loadStage(root, "Edit magic square");
     }

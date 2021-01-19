@@ -18,11 +18,13 @@ public class MagicSquareController {
     @FXML
     void initialize() {
         addNewMagicSquare.setOnAction(event -> {
-
+            addNewMagicSquare.getScene().getWindow().hide();
+            LoadScenes.loadEditMagicSquare();
         });
 
         viewMagicSquare.setOnAction(event -> {
-
+            viewMagicSquare.getScene().getWindow().hide();
+            LoadScenes.loadViewMagicSquare();
         });
 
         backToAdminPanel.setOnAction(event -> {
