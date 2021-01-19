@@ -26,7 +26,7 @@ public class SignIn {
     public Boolean isAdmin() {
         if (login.equals(ADMIN_LOGIN)) {
             User admin = UserActions.getUser(ADMIN_LOGIN);
-            return password.equals(admin.getPassword());
+            return password.equals(MagicSquare.decryptMagicSquare(admin.getPassword()));
         }
         return false;
     }
@@ -38,7 +38,7 @@ public class SignIn {
         if (user == null) {
             Tools.showWarningAlert(INCORRECT_LOGIN_MESSAGE);
         }
-        if (!(user.getPassword().equals(password))) {
+        if (!(MagicSquare.decryptMagicSquare(user.getPassword()).equals(password))) {
             Tools.showWarningAlert(INCORRECT_PASSWORD_MESSAGE);
         } else {
             if ((Duration.between(user.getDateOfCreation().atStartOfDay(), LocalDateTime.now()).toDays() > 25)

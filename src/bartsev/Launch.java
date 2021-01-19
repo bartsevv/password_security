@@ -12,12 +12,13 @@ public class Launch extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         int[][] a = {
-                {17, 23, 4, 10, 11},
-                {24, 5, 6, 12, 18},
-                {1, 7, 13, 19, 25},
-                {8, 14, 20, 21, 2},
-                {15, 16, 22, 3, 9},
+                {17, 24, 1, 8, 15},
+                {23, 5, 7, 14, 16},
+                {4, 6, 13, 20, 22},
+                {10, 12, 19, 21, 3},
+                {11, 18, 25, 2, 9},
         };
+        //UserActions.addNewMagicSquare(a);
         Parent root = FXMLLoader.load(getClass().getResource("signin/SignIn.fxml"));
         primaryStage.setTitle("Bulwark");
         primaryStage.setScene(new Scene(root, 800, 600));

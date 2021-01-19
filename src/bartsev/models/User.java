@@ -22,7 +22,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = MagicSquare.encryptMagicSquare(password);
+        this.password = password;
     }
 
     public void setDateOfCreation(LocalDate dateOfCreation) {
@@ -34,7 +34,7 @@ public class User {
     }
 
     public String getPassword() {
-        return MagicSquare.decryptMagicSquare(password);
+        return password;
     }
 
     public LocalDate getDateOfCreation() {

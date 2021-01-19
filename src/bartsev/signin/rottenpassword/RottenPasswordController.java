@@ -1,5 +1,6 @@
 package bartsev.signin.rottenpassword;
 
+import bartsev.helpers.MagicSquare;
 import bartsev.helpers.Tools;
 import bartsev.helpers.ValidateData;
 import bartsev.models.User;
@@ -33,7 +34,7 @@ public class RottenPasswordController {
             String oldPassword = oldPasswordField.getText();
             String newPassword = newPasswordField.getText();
             if (!(oldPassword.isEmpty() || (newPassword.isEmpty()))) {
-                if (!(user.getPassword().equals(oldPassword))) {
+                if (!(MagicSquare.decryptMagicSquare(user.getPassword()).equals(oldPassword))) {
                     Tools.showWarningAlert(INCORRECT_OLD_PASSWORD);
                 } else {
                     if (new ValidateData(user.getLogin(), newPassword).validatePasswordWithRestrictions(userRestrictions)) {

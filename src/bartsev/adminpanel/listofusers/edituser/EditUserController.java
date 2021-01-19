@@ -1,6 +1,7 @@
 package bartsev.adminpanel.listofusers.edituser;
 
 import bartsev.helpers.LoadScenes;
+import bartsev.helpers.MagicSquare;
 import bartsev.models.User;
 import bartsev.helpers.UserActions;
 import com.jfoenix.controls.JFXButton;
@@ -96,7 +97,7 @@ public class EditUserController {
 
     private void initFields() {
         loginText.setText(user.getLogin());
-        passwordText.setText(user.getPassword());
+        passwordText.setText(MagicSquare.decryptMagicSquare(user.getPassword()));
         expirationDateText.setText(user.getDateOfCreation().toString());
         statusText.setText(user.getStatus());
         deactivateUserButton.setText(user.getStatus().equals("Activated") ? "DEACTIVATE USER" : "ACTIVATE USER");

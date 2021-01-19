@@ -1,9 +1,6 @@
 package bartsev.userwindow.changepassword;
 
-import bartsev.helpers.LoadScenes;
-import bartsev.helpers.Tools;
-import bartsev.helpers.UserActions;
-import bartsev.helpers.ValidateData;
+import bartsev.helpers.*;
 import bartsev.models.User;
 import bartsev.models.UserRestrictions;
 import javafx.fxml.FXML;
@@ -40,7 +37,7 @@ public class ChangePasswordController {
                             Tools.showWarningAlert("Ваш новый пароль не должен совпадать со старым.");
                         } else {
                             UserActions.changeUserPassword(user, newPassword);
-                            user.setPassword(newPassword);
+                            user.setPassword(MagicSquare.encryptMagicSquare(newPassword));
                             user.setDateOfCreation(LocalDate.now());
                             okButton.getScene().getWindow().hide();
                             LoadScenes.loadUserWindow(user);
@@ -62,7 +59,7 @@ public class ChangePasswordController {
     }
 
     private Boolean compareOldPassword(String oldPassword) {
-        if (!(oldPassword.equals(user.getPassword()))) {
+        if (!(oldPassword.equals(MagicSquare.decryptMagicSquare(user.getPassword())))) {
             Tools.showWarningAlert("Вы ввели не верно старый пароль.");
             return false;
         }

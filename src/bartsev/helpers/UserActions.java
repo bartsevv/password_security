@@ -89,6 +89,23 @@ public class UserActions {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void addNewUsers(User user) {
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(FILE_PATH_TO_USERLIST, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedWriter bufferWriter = new BufferedWriter(writer);
+        try {
+            bufferWriter.write(user.getLogin() + " " + MagicSquare.decryptMagicSquare(user.getPassword()) + " " + user.getDateOfCreation() + " " + user.getStatus());
+            bufferWriter.newLine();
+            bufferWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         addNewUserRestrictions(new UserRestrictions(user.getLogin(), true, true, true));
         addNewUserAccess(new UserAccess(user.getLogin(), "n/a", "n/a"));
     }
@@ -148,12 +165,10 @@ public class UserActions {
     }
 
     public static void changeUserPassword(User user, String newPassword) {
-        newPassword = MagicSquare.encryptMagicSquare(newPassword);
         List<User> userList = getUserList();
-
         for (User selectUser : userList) {
             if (selectUser.getLogin().equals(user.getLogin())) {
-                selectUser.setPassword(newPassword);
+                selectUser.setPassword(MagicSquare.encryptMagicSquare(newPassword));
                 selectUser.setDateOfCreation(LocalDate.now());
                 break;
             }
