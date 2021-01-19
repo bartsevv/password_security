@@ -74,6 +74,17 @@ public class UserActions {
         return MagicSquare.intListTo2DArray(magicList);
     }
 
+    public static String getMagicSquareAsString() {
+        int[][] matrix = getMagicSquareFromFile();
+        String newString = "";
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                newString = newString + new Integer(matrix[i][j]).toString() + " ";
+            }
+        }
+        return newString.trim();
+    }
+
     public static void addNewUser(User user) {
         FileWriter writer = null;
         try {

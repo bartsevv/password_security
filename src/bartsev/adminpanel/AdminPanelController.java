@@ -5,8 +5,11 @@ import bartsev.helpers.UserActions;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class AdminPanelController {
@@ -32,7 +35,22 @@ public class AdminPanelController {
     private JFXButton magicSquare;
 
     @FXML
+    private ImageView imageAdmin;
+
+    @FXML
+    private JFXButton selectImageButton;
+
+    @FXML
     void initialize() {
+        File f = new File("ADMIN.png");
+        if (f.exists()) {
+            imageAdmin.setImage(new Image(f.toURI().toString()));
+        }
+
+        selectImageButton.setOnAction(event -> {
+            LoadScenes.loadFileChooser(UserActions.getUser("ADMIN"));
+        });
+
         addNewUserButton.setOnAction(event -> {
             LoadScenes.loadAddNewUserWindow();
             addNewUserButton.getScene().getWindow().hide();
@@ -54,7 +72,6 @@ public class AdminPanelController {
         });
 
         logsButton.setOnAction(event -> {
-            aboutProgramButton.getScene().getWindow().hide();
             try {
                 LoadScenes.loadLogsWindow();
             } catch (IOException e) {

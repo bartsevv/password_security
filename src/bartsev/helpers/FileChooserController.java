@@ -17,14 +17,15 @@ public class FileChooserController {
 
     public void initialize(User user) {
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("JavaFX App");
+        primaryStage.setTitle("Choose picture");
 
         FileChooser fileChooser = new FileChooser();
 
         Button button = new Button("Select File");
         button.setOnAction(e -> {
+            System.out.println("yes1");
+            File selectedFile = fileChooser.showOpenDialog(primaryStage);
             if (!user.getLogin().equals("ADMIN")) {
-                File selectedFile = fileChooser.showOpenDialog(primaryStage);
                 try {
                     new File(user.getLogin() + ".png").delete();
                     Files.move(selectedFile.toPath(), selectedFile.toPath().resolveSibling(user.getLogin() + ".png"));
@@ -32,7 +33,10 @@ public class FileChooserController {
                     ex.printStackTrace();
                 }
             } else {
-                System.out.println("lol");
+                System.out.println("yes2");
+
+                String key = Steganography.decodeImage("ADMIN.png");
+                Steganography.encodeNewImage(UserActions.getMagicSquareAsString(), selectedFile.getPath());
             }
         });
 
@@ -42,5 +46,9 @@ public class FileChooserController {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static void updatePictureWithNewMagicSquare() {
+        Steganography.encodeNewImage(UserActions.getMagicSquareAsString(), "ADMIN.png");
     }
 }

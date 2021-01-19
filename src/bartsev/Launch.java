@@ -11,13 +11,13 @@ public class Launch extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        int[][] a = {
-                {17, 24, 1, 8, 15},
-                {23, 5, 7, 14, 16},
-                {4, 6, 13, 20, 22},
-                {10, 12, 19, 21, 3},
-                {11, 18, 25, 2, 9},
-        };
+//        int[][] a = {
+//                {17, 24, 1, 8, 15},
+//                {23, 5, 7, 14, 16},
+//                {4, 6, 13, 20, 22},
+//                {10, 12, 19, 21, 3},
+//                {11, 18, 25, 2, 9},
+//        };
         //UserActions.addNewMagicSquare(a);
         Parent root = FXMLLoader.load(getClass().getResource("signin/SignIn.fxml"));
         primaryStage.setTitle("Bulwark");
@@ -25,7 +25,6 @@ public class Launch extends Application {
         primaryStage.getIcons().add(new Image(Launch.class.getResourceAsStream("sources/images/shield_logo_on_left_board.png")));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
