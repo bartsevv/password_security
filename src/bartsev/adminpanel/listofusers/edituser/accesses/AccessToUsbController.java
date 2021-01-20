@@ -28,7 +28,8 @@ public class AccessToUsbController {
     @FXML
     void initialize() {
         saveButton.setOnAction(event -> {
-            UserAccess userAccess = new UserAccess(user.getLogin(), firstDevice.isSelected() ? FIRST_DEVICE : "n/a", secondDevice.isSelected() ? SECOND_DEVICE : "n/a");
+            UserAccess userAccess = new UserAccess
+                    (user.getLogin(), firstDevice.isSelected() ? FIRST_DEVICE : "n/a", secondDevice.isSelected() ? SECOND_DEVICE : "n/a");
             UserActions.changeUserAccess(userAccess);
         });
 
@@ -40,7 +41,6 @@ public class AccessToUsbController {
 
     public void transferMessage(User user) {
         this.user = user;
-        //UserActions.synhronizeUsersWithAccessToUsb();
         UserAccess userAccess = UserActions.getUserAccess(user.getLogin());
         firstDevice.setSelected(userAccess.getFirstDevice().equals(FIRST_DEVICE));
         secondDevice.setSelected(userAccess.getSecondDevice().equals(SECOND_DEVICE));

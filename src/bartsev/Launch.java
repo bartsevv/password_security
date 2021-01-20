@@ -1,5 +1,6 @@
 package bartsev;
 
+import bartsev.helpers.UsbHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,9 @@ public class Launch extends Application {
 //                {11, 18, 25, 2, 9},
 //        };
         //UserActions.addNewMagicSquare(a);
+        for(String str: UsbHelper.getListOfUsb()) {
+            System.out.println(str);
+        }
         Parent root = FXMLLoader.load(getClass().getResource("signin/SignIn.fxml"));
         primaryStage.setTitle("Bulwark");
         primaryStage.setScene(new Scene(root, 800, 600));

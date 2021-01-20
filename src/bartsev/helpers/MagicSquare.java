@@ -33,7 +33,6 @@ public class MagicSquare {
         return decryptedWord.trim().replaceAll("\\*", "");
     }
 
-
     public static Boolean isMagicSquare(List<Integer> list) {
         int mat[][] = intListTo2DArray(list);
         int N = 5;
