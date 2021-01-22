@@ -24,14 +24,8 @@ public class UserActions {
     public final static String DEACTIVATED_USER = "Deactivated";
     public final static String ACTIVATED_USER = "Activated";
 
-    private static void changePasswordWithNewMagicSquare() {
-        List<User> userList = getUserList();
-        for (User user : userList) {
-            changeUserPassword(user, user.getPassword());
-        }
-    }
-
     public static void addNewMagicSquare(int[][] magicSquare) {
+        decryptAllUserPasswordWithOldMagicSquare();
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(FILE_PATH_TO_MAGIC_SQUARE);
@@ -57,7 +51,7 @@ public class UserActions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        changePasswordWithNewMagicSquare();
+        encryptAllUserPasswordWithNewMagicSquare();
     }
 
     public static int[][] getMagicSquareFromFile() {
@@ -183,6 +177,28 @@ public class UserActions {
                 selectUser.setDateOfCreation(LocalDate.now());
                 break;
             }
+        }
+        clearTheFile(FILE_PATH_TO_USERLIST);
+        for (User selectUser : userList) {
+            addNewUser(selectUser);
+        }
+    }
+
+    public static void decryptAllUserPasswordWithOldMagicSquare() {
+        List<User> userList = getUserList();
+        for (User selectUser: userList) {
+            selectUser.setPassword(MagicSquare.decryptMagicSquare(selectUser.getPassword()));
+        }
+        clearTheFile(FILE_PATH_TO_USERLIST);
+        for (User selectUser : userList) {
+            addNewUser(selectUser);
+        }
+    }
+
+    public static void encryptAllUserPasswordWithNewMagicSquare() {
+        List<User> userList = getUserList();
+        for (User selectUser: userList) {
+            selectUser.setPassword(MagicSquare.encryptMagicSquare(selectUser.getPassword()));
         }
         clearTheFile(FILE_PATH_TO_USERLIST);
         for (User selectUser : userList) {
