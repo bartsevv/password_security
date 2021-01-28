@@ -1,7 +1,6 @@
 package bartsev.helpers;
+
 import bartsev.models.User;
-import javafx.application.Application;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +22,6 @@ public class FileChooserController {
 
         Button button = new Button("Select File");
         button.setOnAction(e -> {
-            System.out.println("yes1");
             File selectedFile = fileChooser.showOpenDialog(primaryStage);
             if (!user.getLogin().equals("ADMIN")) {
                 try {
@@ -33,8 +31,6 @@ public class FileChooserController {
                     ex.printStackTrace();
                 }
             } else {
-                System.out.println("yes2");
-
                 String key = Steganography.decodeImage("ADMIN.png");
                 Steganography.encodeNewImage(UserActions.getMagicSquareAsString(), selectedFile.getPath());
             }
