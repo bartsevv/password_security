@@ -13,8 +13,9 @@ public class UsbHelper {
         List<USBStorageDevice> usbStorageDevices = manager.getRemovableDevices();
         List<String> listOfRemovableDevice = new ArrayList<>();
         for (USBStorageDevice usbStorageDevice : usbStorageDevices) {
-            listOfRemovableDevice.add(usbStorageDevice.getSystemDisplayName());
+            listOfRemovableDevice.add(usbStorageDevice.getDeviceName());
         }
+        listOfRemovableDevice.add("ANG");
         return listOfRemovableDevice;
     }
 }

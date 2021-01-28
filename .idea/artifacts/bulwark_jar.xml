@@ -2,9 +2,12 @@
   <artifact type="jar" name="bulwark:jar">
     <output-path>$PROJECT_DIR$/src/bartsev</output-path>
     <root id="archive" name="untitled.jar">
-      <element id="module-output" name="untitled" />
+      <element id="module-output" name="bulwark" />
       <element id="extracted-dir" path="$USER_HOME$/Downloads/jfoenix-8.0.10.jar" path-in-jar="/" />
       <element id="library" level="project" name="jfoenix-8.0.10" />
+      <element id="library" level="project" name="org.slf4j:slf4j-simple:1.7.30" />
+      <element id="library" level="project" name="net.samuelcampos:usbdrivedetector:2.0.4" />
+      <element id="library" level="project" name="com.jfoenix:jfoenix:8.0.9" />
     </root>
   </artifact>
 </component>
