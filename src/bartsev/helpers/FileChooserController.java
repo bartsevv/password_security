@@ -31,7 +31,7 @@ public class FileChooserController {
                     ex.printStackTrace();
                 }
             } else {
-                String key = Steganography.decodeImage("ADMIN.png");
+                //String key = Steganography.decodeImage("ADMIN.png");
                 Steganography.encodeNewImage(UserActions.getMagicSquareAsString(), selectedFile.getPath());
             }
         });

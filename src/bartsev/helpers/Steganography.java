@@ -15,18 +15,18 @@ public class Steganography {
 //    }
 
     public static void encodeNewImage(String matrix, String newPath) {
-        String currentPath = "ADMIN.png";
+        //String currentPath = "ADMIN.png";
         Convert c = new Convert();
         ImageProcess impro = new ImageProcess();
         byte[] txtBytes = c.txtToByte(matrix);
         BufferedImage img = null;
         try {
-            img = impro.fetchImage(currentPath);
+            img = impro.fetchImage(newPath);
         } catch (Exception e) {
             e.printStackTrace();
         }
         img = impro.hideText(img, txtBytes);
-        new File(currentPath).delete();
+        //new File(currentPath).delete();
         File output = new File(newPath);
         try {
             ImageIO.write(img, "png", output);
