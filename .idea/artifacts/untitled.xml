@@ -17,7 +17,6 @@
         <element id="module-output" name="bulwark" />
       </element>
       <element id="library" level="project" name="net.samuelcampos:usbdrivedetector:2.0.4" />
-      <element id="library" level="project" name="com.jfoenix:jfoenix:8.0.9" />
       <element id="library" level="project" name="org.slf4j:slf4j-api:1.7.30" />
       <element id="library" level="project" name="org.slf4j:slf4j-simple:1.7.30" />
     </root>

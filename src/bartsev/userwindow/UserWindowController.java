@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -30,12 +29,6 @@ public class UserWindowController implements Initializable {
 
     @FXML
     private JFXButton exitButton;
-
-    @FXML
-    private Text loginText;
-
-    @FXML
-    private Text passwordExpirationDateText;
 
     @FXML
     private JFXButton checkUsbButton;
@@ -96,7 +89,5 @@ public class UserWindowController implements Initializable {
         if (f.exists()) {
             imageUser.setImage(new Image(f.toURI().toString()));
         }
-        loginText.setText(("HELLO, " + user.getLogin()).toUpperCase());
-        passwordExpirationDateText.setText("PASSWORD EXPIRATION DATE - " + user.getDateOfCreation());
     }
 }

@@ -65,11 +65,11 @@ public class EditUserController {
         deactivateUserButton.setOnAction(event -> {
             if (user.getStatus().equals(UserActions.ACTIVATED_USER)) {
                 UserActions.changeUserStatus(user.getLogin(), false);
-                deactivateUserButton.setText("ACTIVATE USER");
+                deactivateUserButton.setText("Активировать");
                 user.setStatus(UserActions.DEACTIVATED_USER);
             } else {
                 UserActions.changeUserStatus(user.getLogin(), true);
-                deactivateUserButton.setText("DEACTIVATE USER");
+                deactivateUserButton.setText("Деактивировать");
                 user.setStatus(UserActions.ACTIVATED_USER);
             }
         });

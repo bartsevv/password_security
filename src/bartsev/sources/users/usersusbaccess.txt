@@ -3,3 +3,5 @@ test ANG Bartseva
 test222 ANG Bartseva
 Testoviy n/a n/a
 Test1234 n/a n/a
+NewUser1 n/a n/a
+NewUser2 n/a n/a

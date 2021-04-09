@@ -16,9 +16,7 @@ public class Main extends Application {
             System.out.println(str);
         }
         Parent root = FXMLLoader.load(getClass().getResource("signin/SignIn.fxml"));
-        primaryStage.setTitle("Bulwark");
         primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("sources/images/shield_logo_on_left_board.png")));
         primaryStage.show();
     }
 

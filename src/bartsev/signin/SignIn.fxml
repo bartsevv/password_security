@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -12,63 +18,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@../sources/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bartsev.signin.SignInController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="parent" stylesheets="@../sources/stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bartsev.signin.SignInController">
     <children>
-        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="sidebar">
-            <children>
-                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" smooth="false">
-                    <image>
-                        <Image url="@../sources/images/shield-logo-black-and-white.png" />
-                    </image>
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </VBox.margin>
-                </ImageView>
-                <Label text="" textFill="WHITE">
-                    <font>
-                        <Font name="Ebrima Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label text="BULWARK" textFill="WHITE">
-                    <font>
-                        <Font name="Ebrima Bold" size="22.0" />
-                    </font>
-                </Label>
-            </children>
-        </VBox>
-        <Pane layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #FFF;">
-            <children>
-                <ImageView fitHeight="86.0" fitWidth="78.0" layoutX="162.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../sources/images/shield-logo-png-transparent.png" />
-                    </image>
-                </ImageView>
-                <Label layoutX="153.0" layoutY="179.0" text="BULWARK" textFill="#003153">
-                    <font>
-                        <Font name="Ebrima Bold" size="22.0" />
-                    </font>
-                </Label>
-                <Label layoutX="138.0" layoutY="207.0" text="Sign in to continue" textFill="#a3a3a3">
-                    <font>
-                        <Font name="Ebrima Bold" size="14.0" />
-                    </font>
-                </Label>
-                <JFXTextField fx:id="loginField" focusColor="#003153" layoutX="50.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Login" unFocusColor="#003153">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-                <JFXPasswordField fx:id="passwordField" focusColor="#003153" layoutX="50.0" layoutY="302.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" unFocusColor="#003153">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXPasswordField>
-                <JFXButton fx:id="authSignInButton" buttonType="RAISED" layoutX="50.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="Sign in">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </JFXButton>
-            </children>
-        </Pane>
+          <JFXTextField fx:id="loginField" focusColor="#003153" layoutX="250.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Login" unFocusColor="#003153">
+              <font>
+                  <Font size="14.0" />
+              </font>
+          </JFXTextField>
+          <JFXPasswordField fx:id="passwordField" focusColor="#003153" layoutX="250.0" layoutY="237.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" unFocusColor="#003153">
+              <font>
+                  <Font size="14.0" />
+              </font>
+          </JFXPasswordField>
+          <JFXButton fx:id="authSignInButton" buttonType="RAISED" layoutX="250.0" layoutY="336.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" ripplerFill="#003153" styleClass="loginBtn" text="Вход">
+              <font>
+                  <Font name="System Bold" size="14.0" />
+              </font>
+          </JFXButton>
     </children>
 </AnchorPane>
